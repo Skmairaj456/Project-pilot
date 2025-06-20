@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - Project Pilot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: black;
+      color: #111;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5em;
+      font-weight: 500;
+    }
+
+    .hero {
+      color: white;
+      background: url(https://www.tryeting.jp/wp/wp-content/uploads/2021/04/AI-strength-and-type-02.jpg) center 50% / cover no-repeat;
+      padding: 10em 2em 5em 2em;
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: 5em;
+      margin-bottom: 0.5em;
+    }
+
+    .hero button {
+      padding: 0.8em 1.5em;
+      background: #ffffe4;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .section {
+      text-align: center;
+      padding: 4em 2em;
+    }
+
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      color: #fff;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: auto;
+      color: white;
+    }
+
+    .cards {
+      display: flex;
+      padding: 40px;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      flex: 1 1 calc(33.333% - em);
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: border 0.3s;
+    }
+
+    .card:hover {
+      border: 2px solid #007BFF;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.2em;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      font-size: 1.3em;
+    }
+
+    .card-content p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .card-content button {
+      margin-top: 1em;
+      padding: 0.6em 1.2em;
+      border: none;
+      background: white;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      border-color: #000;
+      cursor: pointer;
+      outline: #000;
+    }
+    .card:hover{
+      transform: scale(1.2); 
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2em;
+      margin-top: 3em;
+    }
+
+    .overlay-card {
+      position: relative;
+      color: white;
+    }
+
+    .overlay-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .overlay-card button{
+      margin-top: 1em;
+      padding: 0.6em 1.2em;
+      border: none;
+      background: whitesmoke;
+      color: #555;
+      font-weight: bold;
+      border-radius: 5px;
+      border-color: #000;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-radius: 8px;
+    }
+
+    .portfolio {
+      background: #FFFDD0;
+      padding: 6em 2em;
+    }
+
+    .portfolio .cards {
+      gap: 2em;
+    }
+
+    .footer-cta {
+      background: #000;
+      color: white;
+      padding: 4em 2em;
+      text-align: left;
+    }
+
+    .footer-cta h2 {
+      font-size: 2em;
+    }
+
+    .footer-cta p {
+      max-width: 500px;
+      font-size: 1em;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero, .footer-cta {
+        text-align: center;
+      }
+
+      .footer-cta h2 {
+        font-size: 1.5em;
+      }
+      .grid-3{
+        grid-template-columns: 1fr;
+      }
+      .card{
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>Project Pilot</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Services</h1>
+  <p>We provide intelligent AI solutions, custom web development, intuitive UI/UX design,<br> advanced tech integrations, strategic branding,<br> and full support for academic projects — all tailored to drive innovation and growth.</p><br><br>
+  <a href="contact.html"><button>Get in Touch</button></a>
+</section>
+
+<section class="section">
+  <h2>Your Partner in Growth</h2>
+  <p>From custom websites and AI chatbots to powerful integrations and academic-grade college projects — we build, deliver, and support everything you need to succeed, all at student-friendly prices.</p>
+  <div class="cards">
+    <div class="card">
+      <img src="https://media.gettyimages.com/id/1452604857/photo/businessman-touching-the-brain-working-of-artificial-intelligence-automation-predictive.jpg?b=1&s=2048x2048&w=0&k=20&c=aQm0ifaU9oYkmy7z0f86ISGiD55FENnmZvKGIt-XSsI=" alt="">
+      <div class="card-content">
+        <h3>AI-Powered Analytics Integration</h3>
+        <p>Create and deploy intelligent, responsive AI chatbots for various applications including customer service, healthcare, and more. </p>
+        <a href="ai-integration.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://media.gettyimages.com/id/1482781031/photo/flat-black-and-white-web-design-studio-page-layout-on-modern-computer-display-with-flying.jpg?b=1&s=2048x2048&w=0&k=20&c=flsSwA6lGWKsxUnQbHPpUAIYgrRdL_AdYAO5VSQ0wVU=" alt="">
+      <div class="card-content">
+        <h3>Innovative Web App Development</h3>
+        <p>Craft cutting-edge web applications tailored to meet the unique needs of your business and captivate users. <br><br></p>
+        <a href="web-development.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://media.gettyimages.com/id/486916254/photo/web-design-concept.jpg?b=1&s=2048x2048&w=0&k=20&c=qgIMx5R3sBqqoXbyqvto13ieBYyFk1sicWIvvN7GlcQ=" alt="">
+      <div class="card-content">
+        <h3>User Interface Enhancement</h3>
+        <p>Elevate your digital presence with intuitive and sleek UI designs that engage users and drive interaction.<br><br></p>
+        <a href="ui-enhancement.html"><button>More Info</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>End-to-End Digital Solutions for Every Need</h2>
+  <p>From custom websites and AI chatbots to powerful integrations and academic-grade college projects — we build, deliver, and support everything you need to succeed, all at student-friendly prices.</p>
+  <div class="grid-3">
+    <!-- 7 overlay cards -->
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/958882144/photo/medicine-webstore-site-template-mock-up-isolated.jpg?b=1&s=2048x2048&w=0&k=20&c=ugOzPBiZwk9UsP2v4qcZwvEdP1voFLV0l_qoV77QqdY=" />
+      <div class="overlay-text">
+        <h3>Web Design & Development</h3>
+        <p>Create tailored AI chatbots to streamline customer interaction and enhance your operations.</p>
+        <a href="web design and development.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/827896866/photo/web-design-layout-sketch-drawing-software-media-www-and-graphic-layout-website-development.jpg?b=1&s=2048x2048&w=0&k=20&c=oeq9lRV5e9vcUkCkiFU1rxaQ5aPCqKmOFiwFwrdhi7g=" />
+      <div class="overlay-text">
+        <h3>Interactive UI Prototyping</h3>
+        <p>Develop prototypes to visualize and refine innovative ideas before full implementation.</p>
+        <a href="interactive UI Prototyping.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/2149039702/photo/neural-network-nodes-deep-learning-artificial-intelligence-machine-learning-model.jpg?b=1&s=2048x2048&w=0&k=20&c=mXlFWkLmm1rSL-lPs2cmQWo7Xde6wbJM4r7epYIWcOk=" />
+      <div class="overlay-text">
+        <h3>AI Integration Solutions</h3>
+        <p>ML, DL, NLP, CV, IoT, Web3, Cybersecurity — practical and academic-grade projects.</p>
+        <a href="AI Integration Solutions.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/1358756115/photo/template-vector-layout-modern-design-size-horizontal.jpg?b=1&s=2048x2048&w=0&k=20&c=asBk85bpel4WdI81j68Ck2THlpwhnj6lwz_sLRD7rMA=" />
+      <div class="overlay-text">
+        <h3>Innovation-Centric Branding</h3>
+        <p>Align branding with innovation through cohesive visual strategies.</p>
+        <a href="Innovation-Centric Branding.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/2207592397/photo/creative-3d-rendering-of-html-css-and-javascript-code-snippets-with-modern-icons-on-a-dark.jpg?b=1&s=2048x2048&w=0&k=20&c=ot-OTzPPgZAeDI7vG19xmCvZpwkivXTkozNazlk7Cjg=" />
+      <div class="overlay-text">
+        <h3>Innovative Concept Development</h3>
+        <p>Transform your ideas into groundbreaking innovation with expert guidance.</p>
+        <a href="Innovative Concept Development.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/1731629004/photo/mobile-app-design-web-design-streaming-app-and-user-interface.jpg?b=1&s=2048x2048&w=0&k=20&c=C9uLrDwnTX7Of6-7fkjQcCT1EyHpZkhgqwErs2dbLp8=" />
+      <div class="overlay-text">
+        <h3>Customized UI/UX Design</h3>
+        <p>Dark-themed designs crafted for optimal impact and user engagement.</p>
+        <a href="Customized UIUX Design.html"><button>More Info</button></a>
+      </div>
+    </div>
+    <div class="overlay-card">
+      <img src="https://media.gettyimages.com/id/1635297999/photo/neural-network-model-concept.jpg?b=1&s=2048x2048&w=0&k=20&c=fTi16kuMAj7i9qPxl0DZCwZp8cww6Cu_uFGlv4VBA6g=" />
+      <div class="overlay-text">
+        <h3>College Projects</h3>
+        <p>Source code, documentation, deployment-ready — ideal for learners and innovators.</p>
+        <a href="College Projects.html"><button>More Info</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio">
+  <div class="cards">
+    <div class="card">
+      <img src="https://connectivelinkstechnology.com/assets/front/images/service/dynamic_web/2.jpg" />
+      <div class="card-content">
+        <h3>Dynamic Web Design</h3>
+        <p>We developed a dynamic, dark-themed website blending innovation with user experience.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://media.gettyimages.com/id/2206651003/photo/e-commerce-dashboard-with-shopping-cart-icon-and-data-visualizations-3d-rendering.jpg?b=1&s=2048x2048&w=0&k=20&c=bKp6YmaC143_wMgWfANfyAX19CjpHp-3GiqrJYl5iKE=" />
+      <div class="card-content">
+        <h3>E-commerce Platform Launch</h3>
+        <p>Sleek dark-themed platform optimized for responsiveness and branding impact.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://media.gettyimages.com/id/1403985100/photo/web-development-for-ui-ux-design-concept-illustration-landing-page-template-business-idea.jpg?b=1&s=2048x2048&w=0&k=20&c=BsRl5xgnAV132RMXd5EA4D_2Te0uD4j6yC0DRiTfjU0=" />
+      <div class="card-content">
+        <h3>Interactive Tech Showcases</h3>
+        <p>Implemented interactive animations and immersive experiences for clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="footer-cta">
+  <h2>Drive Future Innovations Now</h2>
+  <p>Explore cutting-edge solutions tailored for India's dynamic market. Project Pilot turns visionary concepts into impactful innovations.</p>
+</section>
+
+<footer>
+  Project Pilot
+</footer>
+
+</body>
+</html>
+

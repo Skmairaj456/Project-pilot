@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive UI Prototyping - Project Pilot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    header {
+      background: #000;
+      color: white;
+      padding: 1.5em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5em;
+      font-weight: 500;
+    }
+    .hero {
+      padding: 12em 2em 5em;
+      text-align: left;
+    }
+    .hero h1 {
+      font-size: 4em;
+      margin-bottom: 0.3em;
+    }
+    .hero p {
+      max-width: 600px;
+      font-size: 1.2em;
+    }
+    .section {
+      padding: 4em 2em;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+    .section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+      color: #ddd;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
+      padding: 2em;
+    }
+    .image-grid img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .highlight {
+      background: #111;
+      padding: 3em 2em;
+      text-align: center;
+      color: #fff;
+    }
+    .highlight h3 {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+    .highlight ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1em;
+    }
+    .highlight ul li::before {
+      content: '✔';
+      margin-right: 0.5em;
+      color: #aaffaa;
+    }
+    .cta {
+      text-align: center;
+      padding: 4em 2em;
+    }
+    .cta a {
+      padding: 0.8em 1.5em;
+      background: #ffffe4;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>Project Pilot</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Interactive UI Prototyping</h1>
+    <p>Experience the future of design with intuitive, dynamic user interface prototypes tailored to streamline innovation and elevate user experience.</p>
+  </section>
+
+  <section class="section">
+    <h2>Design Smarter. Validate Faster.</h2>
+    <p>We help bring your app and web ideas to life with rapid UI prototyping. Get high-fidelity interfaces that not only look good but function seamlessly, giving you a true sense of the final product before development begins.</p>
+  </section>
+
+  <div class="image-grid">
+    <img src="https://i.ytimg.com/vi/5IanQIwhA4E/maxresdefault.jpg" alt="UI concept">
+    <img src="https://backend.vlinkinfo.com/uploads/The_UX_Design_Process_4ffc68f510.jpg" alt="Prototype workflow">
+    <img src="https://assets.justinmind.com/wp-content/uploads/2017/11/lucidchart-user-flow-justinmind.png" alt="UI flow">
+  </div>
+
+  <section class="highlight">
+    <h3>Why Choose Us?</h3>
+    <ul>
+      <li>Affordable prototyping packages for students and startups</li>
+      <li>Fast turnaround and iterative feedback</li>
+      <li>Trusted by clients across domains for creative design accuracy</li>
+      <li>Interactive walkthroughs and user testing-ready prototypes</li>
+    </ul>
+  </section>
+
+  <section class="cta">
+    <a href="contact.html">Get in Touch</a>
+  </section>
+
+  <footer>
+    Project Pilot
+  </footer>
+</body>
+</html>

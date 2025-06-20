@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Project Pilot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background-color: black;
+      color: #111;
+    }
+    header {
+      background-color: #000;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5em;
+      font-weight: 500;
+    }
+    .section {
+      padding: 60px 40px;
+    }
+
+    .black-section {
+      background-color: #000;
+      color: #fff;
+      padding: 10em 2em 5em 2em;
+      text-align: left;
+    }
+
+    .black-section h1 {
+      font-size: 48px;
+      margin-bottom: 50px;
+    }
+
+    .black-section button {
+      padding: 10px 20px;
+      background: #ffffe4;
+      color: black;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 25px;
+      border: none;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #111;
+      color: white;
+      margin: 10% auto;
+      padding: 2em;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .modal-content a {
+      color: #ffffe4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .close {
+      color: white;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal .icon {
+      font-size: 1.2em;
+      margin-right: 0.5em;
+    }
+
+    .map-location {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #000;
+      color: white;
+    }
+
+    .location-box {
+      flex: 1;
+      padding: 40px;
+      background-color: #111;
+      color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px20x rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .location-box h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .location-box p {
+      font-size: 20px;
+    }
+
+    .map {
+      flex: 1;
+      min-height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .contact-form-section {
+      background-color: #000;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-text {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .contact-text h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .contact-text p {
+      font-size: 18px;
+      color: #bfa8a8;
+    }
+
+    .contact-form {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid#444;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      resize: none;
+    }
+    .contact-form button{
+      padding: 12px 24px;
+      background: #ffffe4;
+      color: #000;
+      border: 2px solid black;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 25px;
+    }
+    .black-bottom {
+      background-color: #000;
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .black-bottom h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .black-bottom p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: white;
+      font-weight: 500;
+      font-size: 18px;
+    }
+    @media (max-width: 768px) {
+      .map-location, .contact-form-section {
+        flex-direction: column;
+      }
+
+      .location-box, .contact-text, .contact-form {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div>Project Pilot</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+  <!-- Header Section -->
+  <div class="black-section">
+    <h1>Contact</h1>
+    <button id="openModalBtn">Get in Touch</button>
+  </div>
+
+  <!-- Contact Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Contact Us</h2>
+    <p><span class="icon">📞</span> Call us: <a href="tel:9890076587">9441526626</a></p>
+    <p><span class="icon">✉️</span> Email us: <a href="mailto:hsnahiitaj@gmail.com">skmairaj678@gmail.com</a></p>
+  </div>
+</div>
+
+  <!-- Map + Location Section -->
+  <div class="map-location section">
+    <div class="location-box">
+      <h2>Location</h2>
+      <p>India</p>
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.6441443266276!2d78.3596438749369!3d17.4767382834257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9300359c7851%3A0x874e1c0e08e45414!2sHolaa%20Vibrant%20Living!5e0!3m2!1sen!2sin!4v1750345891952!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Contact Form Section -->
+  <div class="contact-form-section section">
+    <div class="contact-text">
+      <h2>Get In Touch With Us</h2>
+      <p>Reach out to Project Pilot for innovative solutions in India.</p>
+    </div>
+    <div class="contact-form">
+      <form id="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script>
+  document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+
+    const response = await fetch("https://formspree.io/f/xrbkklpo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert("Message sent successfully!");
+      form.reset();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
+<script>
+  const modal = document.getElementById("contactModal");
+  const btn = document.getElementById("openModalBtn");
+  const span = document.querySelector(".modal .close");
+
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+
+
+  <!-- Final Black Section -->
+  <div class="black-bottom">
+    <h2>Innovate Beyond Boundaries</h2>
+    <p>Discover cutting-edge solutions crafted to transform your visionary ideas into reality. Let our expertise propel your projects into the future of innovation.</p>
+  </div>
+<footer>
+  Project Pilot
+</footer>
+</body>
+</html>
