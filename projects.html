@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Project Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #8b5cf6;
+      --accent-color: #ffffe4;
+      --dark-bg: #0a0a0a;
+      --dark-surface: #111111;
+      --dark-surface-2: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      padding: 1rem 4rem;
+      background: rgba(10, 10, 10, 0.95);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      cursor: pointer;
+      letter-spacing: -0.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-1);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #8b5cf6;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10rem 4rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 4rem;
+      flex-wrap: wrap;
+      background: var(--dark-surface);
+      position: sticky;
+      top: 80px;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gradient-1);
+      color: var(--text-primary);
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2rem;
+      padding: 4rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--dark-surface);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-1);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      z-index: 1;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 30px 80px rgba(99, 102, 241, 0.25);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.15);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-category {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-color);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      padding: 0.35rem 0.75rem;
+      background: var(--dark-surface-2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      gap: 0.75rem;
+      color: #fff;
+    }
+
+    .project-link::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+
+    .project-link:hover::after {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        padding: 2rem;
+      }
+
+      .filter-tabs {
+        padding: 1.5rem 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      .hero {
+        padding: 8rem 1.5rem 3rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+
+      .filter-tabs {
+        top: 70px;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <h1>Project Pilot</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Our Projects</h1>
+      <p>Showcasing innovative solutions across AI, automation, and enterprise systems</p>
+    </div>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
+    <button class="filter-btn" data-filter="automation">Automation</button>
+    <button class="filter-btn" data-filter="gpu">GPU/System</button>
+    <button class="filter-btn" data-filter="enterprise">Enterprise</button>
+  </div>
+
+  <div class="projects-grid" id="projectsGrid">
+    <!-- AI/ML Projects -->
+    <div class="project-card" data-category="ai-ml">
+      <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=600&fit=crop" alt="Hand Gesture Recognition" class="project-image">
+      <div class="project-content">
+        <span class="project-category">AI/ML • Computer Vision</span>
+        <h3 class="project-title">Hand Gesture Recognition System</h3>
+        <p class="project-description">Real-time sign language gesture detection using MediaPipe and CNN. Supports 5 gestures with 66.7% training accuracy. Features webcam input, hand landmark detection, and real-time processing at 30 FPS.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">MediaPipe</span>
+          <span class="tech-tag">CNN</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">TensorFlow</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="ai-ml">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop" alt="Medical AI" class="project-image">
+      <div class="project-content">
+        <span class="project-category">AI/ML • Medical Imaging</span>
+        <h3 class="project-title">Medical AI Training System</h3>
+        <p class="project-description">Comprehensive deep learning system for medical image classification. Achieves 93.75% accuracy on IDC, 93.23% on BreaKHis, and 86.17% on CBIS-DDSM datasets. Features transfer learning and GPU optimization.</p>
+        <div class="project-tech">
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">EfficientNet</span>
+          <span class="tech-tag">Transfer Learning</span>
+          <span class="tech-tag">Medical Imaging</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="ai-ml">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop" alt="LLM Debugger" class="project-image">
+      <div class="project-content">
+        <span class="project-category">AI/ML • GPU Optimization</span>
+        <h3 class="project-title">LLM-Accelerated GPU Debugger</h3>
+        <p class="project-description">AI-powered tool for analyzing and optimizing CUDA/GPU code using LLMs and NVIDIA profiling. Features static analysis, dynamic profiling, real-time optimization, and modern React web interface.</p>
+        <div class="project-tech">
+          <span class="tech-tag">CUDA</span>
+          <span class="tech-tag">LLM</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">NVIDIA Tools</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <!-- Automation Projects -->
+    <div class="project-card" data-category="automation">
+      <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop" alt="Email Automation" class="project-image">
+      <div class="project-content">
+        <span class="project-category">Automation • Email</span>
+        <h3 class="project-title">Email Automation System</h3>
+        <p class="project-description">Intelligent email automation with template management, scheduling, and logging. Features configurable templates, automated sending, and comprehensive logging system for business communications.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">SMTP</span>
+          <span class="tech-tag">Automation</span>
+          <span class="tech-tag">JSON Config</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="automation">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop" alt="DaVinci Resolve MCP" class="project-image">
+      <div class="project-content">
+        <span class="project-category">Automation • Video Editing</span>
+        <h3 class="project-title">DaVinci Resolve MCP Server</h3>
+        <p class="project-description">Model Context Protocol server connecting AI assistants to DaVinci Resolve. Enables natural language control of video editing workflows, timeline management, and automated reel creation.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">MCP</span>
+          <span class="tech-tag">DaVinci Resolve</span>
+          <span class="tech-tag">AI Integration</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="automation">
+      <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=600&fit=crop" alt="Instagram Reel Creator" class="project-image">
+      <div class="project-content">
+        <span class="project-category">Automation • Social Media</span>
+        <h3 class="project-title">Instagram Reel Creator</h3>
+        <p class="project-description">Automated Instagram reel creation with DaVinci Resolve integration. Features advanced transitions, professional effects, media pool management, and batch processing capabilities.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">DaVinci Resolve</span>
+          <span class="tech-tag">Video Processing</span>
+          <span class="tech-tag">Automation</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <!-- GPU/System Projects -->
+    <div class="project-card" data-category="gpu">
+      <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=600&fit=crop" alt="GPU Power Conservation" class="project-image">
+      <div class="project-content">
+        <span class="project-category">GPU • System Optimization</span>
+        <h3 class="project-title">GPU Power Conservation System</h3>
+        <p class="project-description">Real-time GPU power management and conservation system. Features adaptive frequency scaling, power monitoring, and intelligent governor controls for optimal performance-to-power ratio.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">NVIDIA</span>
+          <span class="tech-tag">GPU Control</span>
+          <span class="tech-tag">Power Management</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="gpu">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" alt="NVIDIA GPU Governor" class="project-image">
+      <div class="project-content">
+        <span class="project-category">GPU • System Control</span>
+        <h3 class="project-title">NVIDIA GPU Governor</h3>
+        <p class="project-description">Advanced GPU governor system with adaptive frequency and power management. Real-time monitoring, dynamic adjustment, and intelligent power conservation for NVIDIA GPUs.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">NVIDIA</span>
+          <span class="tech-tag">System Control</span>
+          <span class="tech-tag">Real-time</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <!-- Enterprise Projects -->
+    <div class="project-card" data-category="enterprise">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Workshop Management" class="project-image">
+      <div class="project-content">
+        <span class="project-category">Enterprise • Management System</span>
+        <h3 class="project-title">Workshop Management System</h3>
+        <p class="project-description">Comprehensive workshop and job card management system. Features customer management, job tracking, inventory control, and automated reporting for automotive workshops.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Web Development</span>
+          <span class="tech-tag">Database</span>
+          <span class="tech-tag">Management System</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="enterprise">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="Sales System" class="project-image">
+      <div class="project-content">
+        <span class="project-category">Enterprise • Sales</span>
+        <h3 class="project-title">Ruby Auto Parts Sales System</h3>
+        <p class="project-description">Complete sales management system for auto parts business. Features inventory management, customer tracking, sales analytics, and automated reporting capabilities.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Web Development</span>
+          <span class="tech-tag">Sales System</span>
+          <span class="tech-tag">Database</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="enterprise">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" alt="Project Management SaaS" class="project-image">
+      <div class="project-content">
+        <span class="project-category">Enterprise • SaaS</span>
+        <h3 class="project-title">Project Management SaaS</h3>
+        <p class="project-description">Cloud-based project management platform with team collaboration, task tracking, timeline management, and comprehensive analytics for modern teams.</p>
+        <div class="project-tech">
+          <span class="tech-tag">SaaS</span>
+          <span class="tech-tag">Cloud</span>
+          <span class="tech-tag">Project Management</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, 10);
+          } else {
+            card.classList.remove('visible');
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, observerOptions);
+
+    projectCards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
+
