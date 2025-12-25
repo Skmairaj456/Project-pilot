@@ -22,7 +22,7 @@
       --dark-surface: #111111;
       --dark-surface-2: #1a1a1a;
       --text-primary: #ffffff;
-      --text-secondary: #a0a0a0;
+      --text-secondary: #b8b8b8;
       --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -208,11 +208,11 @@
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       cursor: pointer;
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .project-card.visible {
+    .project-card.animate-in {
       opacity: 1;
       transform: translateY(0);
     }
@@ -590,10 +590,10 @@
           if (filter === 'all' || card.dataset.category === filter) {
             card.style.display = 'block';
             setTimeout(() => {
-              card.classList.add('visible');
+              card.classList.add('animate-in');
             }, 10);
           } else {
-            card.classList.remove('visible');
+            card.classList.remove('animate-in');
             setTimeout(() => {
               card.style.display = 'none';
             }, 300);
@@ -612,7 +612,7 @@
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('animate-in');
           }, index * 100);
         }
       });

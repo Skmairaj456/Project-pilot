@@ -22,7 +22,7 @@
       --dark-surface: #111111;
       --dark-surface-2: #1a1a1a;
       --text-primary: #ffffff;
-      --text-secondary: #a0a0a0;
+      --text-secondary: #b8b8b8;
       --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
@@ -369,23 +369,24 @@
     }
 
     .portfolio .section-title {
-      color: #000;
+      color: var(--text-primary);
     }
 
     .portfolio .section-description {
-      color: #333;
+      color: var(--text-secondary);
     }
 
     .portfolio .card {
-      background: #fff;
+      background: var(--dark-surface-2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .portfolio .card-content h3 {
-      color: #000;
+      color: var(--text-primary);
     }
 
     .portfolio .card-content p {
-      color: #555;
+      color: var(--text-secondary);
     }
 
     .footer-cta {
