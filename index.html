@@ -3,297 +3,617 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Pilot - Home</title>
+  <title>Project Pilot - Transforming Ideas into Reality</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #8b5cf6;
+      --accent-color: #ffffe4;
+      --dark-bg: #0a0a0a;
+      --dark-surface: #111111;
+      --dark-surface-2: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
 
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background-color: #000;
-      color: #fff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
     }
+
+    /* Header Styles */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 40px;
-      position: sticky;
+      padding: 1.5rem 4rem;
+      position: fixed;
       top: 0;
-      background: #000;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
       z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
     }
+
+    header.scrolled {
+      padding: 1rem 4rem;
+      background: rgba(10, 10, 10, 0.95);
+    }
+
     header h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       cursor: pointer;
+      letter-spacing: -0.5px;
     }
+
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 2.5rem;
       margin: 0;
+      align-items: center;
     }
+
     nav a {
-      color: white;
+      color: var(--text-primary);
       text-decoration: none;
-      margin-left: 1.5em;
       font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s ease;
     }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-1);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #8b5cf6;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 100px 40px 40px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
     .hero h1 {
-      font-size: 5rem;
-      margin-bottom: 10px;
-      font-weight: 800;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.8s ease;
     }
+
     .hero p {
-      font-size: 20px;
-      max-width: 600px;
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      max-width: 650px;
+      animation: fadeInUp 1s ease;
     }
+
+    .hero strong {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
     .hero button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #ffffe4;
-      font-size: 20px;
-      color: black;
-      width: 200px;
-      height: 65px;
-      border-radius: 25px;
+      margin-top: 1rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--accent-color) 0%, #f0f0d0 100%);
+      color: #000;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
       cursor: pointer;
-      line-height: 2.1;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 255, 228, 0.2);
+      animation: fadeInUp 1.2s ease;
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .hero button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .hero button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 255, 228, 0.3);
+    }
+
+    .hero button:active {
+      transform: translateY(-1px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      line-height: 1.8;
+    }
+
+    /* Horizontal Scroll Gallery */
     .horizontal-scroll {
       width: 100%;
-      display: flex;
-      overflow-x: hidden;
-      gap: 20px;
-      padding: 40px;
-      background-color: #000;
+      overflow: hidden;
+      padding: 4rem 0;
+      background: var(--dark-surface);
+      position: relative;
     }
-    .scroll-track{
-      display: flex;
-      gap: 20px;
-      animation: scroll-left 30s linear infinite;
-    }
-    .scroll-track img {
-      height: 400px; 
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-    .section {
-      padding: 60px 40px;
-    }
-    .section.small {
-      font-size: 20px;
-      color: #aaa;
-      padding-top: 80px;
-      margin-bottom: -97px;
-    }
-    .section.medium {
-      font-size: 25px;
-      margin-top: 40px;
 
-    }
-    .section.large {
-      font-size: 56px;
-      font-weight: bold;
-      margin-bottom: -95px;
-    }
-    .four-images {
+    .scroll-track {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 40px;
-      flex-wrap: wrap;
+      gap: 2rem;
+      animation: scroll-left 40s linear infinite;
+      width: fit-content;
     }
-    .four-images div {
-      background-color: #000;
-      padding: 20px;
-      flex: 1 1 200px;
-      max-width: 300px;
-      border-radius: 10px;
-      color: #fff;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    .four-images img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .four-images div:hover{
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-    .side-by-side {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 40px;
-      flex-wrap: wrap;
-    }
-    .side-by-side div {
-      background-color: #000;
-      padding: 20px;
-      flex: 1 1 45px;
-      max-width: 48%;
-      border-radius: 10px;
-      box-sizing: border-box;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      color: #fff;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    .side-by-side img{
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        display: block;
-        margin-bottom: 15px;
-    }
-    .side-by-side div:hover{
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    }
-    .services-container{
-      display: flex;
-      gap: 60px;
-      padding: 40px;
-      justify-content: center;
-      background-color: #000;
-      flex-wrap: wrap;
-    }
-    .services-card{
-      background-color: transparent;
-      color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
+
+    .scroll-track img {
+      height: 450px;
+      width: auto;
+      border-radius: 20px;
+      flex-shrink: 0;
+      object-fit: cover;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease;
     }
-    .services-card img{
+
+    .scroll-track:hover {
+      animation-play-state: paused;
+    }
+
+    .scroll-track img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Card Styles */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .card {
+      background: var(--dark-surface);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-1);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+
+    .card img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      transition: transform 0.4s ease;
     }
-    .services-card:hover{
-      transform: translateY(-5px);
+
+    .card:hover img {
+      transform: scale(1.05);
     }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* Side by Side Cards */
+    .side-by-side {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 3rem;
+      padding: 2rem 0;
+    }
+
+    /* Services Container */
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+      padding: 2rem 0;
+    }
+
+    .services-card {
+      background: var(--dark-surface);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .services-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(99, 102, 241, 0.2);
+    }
+
+    .services-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .services-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .services-card-content {
+      padding: 2rem;
+    }
+
+    .services-card h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .services-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Testimonials */
     .testimonials {
-      display: flex;
-      background: #111;
-      gap: 20px;
-      padding: 80px 40px;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 4rem 0;
+      background: var(--dark-surface);
     }
+
     .testimonial-box {
-      background: #2b2b2b;
-      padding: 30px;
-      border-radius: 10px;
-      flex: 1 1 calc(33.33% - 20px);
-      min-width: 280px;
-      min-height: 350px;
-      flex-direction: column;
+      background: var(--dark-surface-2);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
-      box-sizing: border-box;
-      color: #fff;
-      font-size: 1.1rem;
-      justify-content: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-direction: column;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
+
+    .testimonial-box::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 8rem;
+      color: rgba(99, 102, 241, 0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
     .testimonial-box:hover {
       transform: translateY(-10px);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
     }
+
     .testimonial-box p {
-      margin: 0 0 10px 0;
-      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      flex-grow: 1;
     }
+
     .testimonial-box .author {
-      margin-top: auto;
-      font-weight: 500;
-      color: #ccc;
+      font-weight: 600;
+      color: var(--text-primary);
       text-align: right;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      margin-top: auto;
     }
+
+    /* Final Banner */
     .final-banner {
       position: relative;
-      background: url(https://www.cisco.com/content/dam/cisco-cdc/site/images/heroes/solutions/artificial-intelligence/cisco-ai-bend-it-hero-3200x1372.jpg) center/cover no-repeat;
-      height: 400px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%),
+                  url(https://www.cisco.com/content/dam/cisco-cdc/site/images/heroes/solutions/artificial-intelligence/cisco-ai-bend-it-hero-3200x1372.jpg) center/cover no-repeat;
+      min-height: 500px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
+      overflow: hidden;
     }
-    .final-banner::after {
+
+    .final-banner::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.75) 100%);
     }
+
     .final-banner-content {
       position: relative;
       z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
     }
+
     .final-banner h2 {
-      font-size: 36px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
     }
+
     .final-banner p {
-      font-size: 16px;
-      margin: 10px 0;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      color: var(--text-secondary);
+      line-height: 1.8;
     }
-    .discover-btn{
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #ffffe4;
-      font-size: 20px;
-      color: black;
-      border: none;
+
+    .final-banner em {
+      color: var(--accent-color);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .discover-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--accent-color) 0%, #f0f0d0 100%);
+      color: #000;
+      font-size: 1.1rem;
+      font-weight: 600;
       text-decoration: none;
-      width: 200px;
-      height: 65px;
-      border-radius: 25px;
+      border-radius: 50px;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      line-height: 2.1;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 255, 228, 0.2);
     }
-    .discover-btn:hover{
+
+    .discover-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px rbga(0,0,0,0.4);
+      box-shadow: 0 15px 40px rgba(255, 255, 228, 0.3);
     }
-    .footer-inside-banner{
-      margin-top: 50px;
-      font-size: 16px;
-      color: #ccc;
-      text-align: center;
-      font-weight: bold;
+
+    .footer-inside-banner {
+      margin-top: 3rem;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      header {
+        padding: 1.5rem 2rem;
+      }
+
+      .hero, .section {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .side-by-side {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      nav ul {
+        gap: 1.5rem;
+      }
+
+      nav a {
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+        min-height: auto;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .card-grid,
+      .services-container {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading Animation */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <header id="header">
     <h1>Project Pilot</h1>
     <nav>
       <ul>
@@ -305,107 +625,122 @@
   </header>
 
   <div class="hero">
-    <h1>Transforming<br> Ideas into Reality</h1>
-    <p>Elevate your innovations with Project Pilot's <strong>affordable</strong>, expert solutions — bridging creativity and execution for unparalleled success in India.</p>
-    <button>Explore Innovations</button><br>
+    <div class="hero-content">
+      <h1>Transforming<br> Ideas into Reality</h1>
+      <p>Elevate your innovations with Project Pilot's <strong>affordable</strong>, expert solutions — bridging creativity and execution for unparalleled success in India.</p>
+      <button>Explore Innovations</button>
+    </div>
   </div>
 
-<div class="section small">High-Impact, Low-Cost</div>
-<div class="section medium">Experience cutting-edge innovation without breaking the bank — solutions that fit your vision *and* your budget.</div>
-
+  <section class="section">
+    <span class="section-label">High-Impact, Low-Cost</span>
+    <p class="section-description">Experience cutting-edge innovation without breaking the bank — solutions that fit your vision <em>and</em> your budget.</p>
+  </section>
 
   <div class="horizontal-scroll">
-  <div class="scroll-track">
-    <img src="https://cdn.durable.co/getty/1v5vGLMIMk3uYGcuDQAUYr3GWL0yn6VsWCphRpbSEbopIYOL5iqWfWGcEcG1QCF5.jpeg">
-    <img src="https://preludesys.com/wp-content/uploads/2023/10/Boomi-AI-integration.jpg">
-    <img src="https://cdn.durable.co/getty/1rJTMDNgMTH7qxgQh4Sl2NCimZAX2zXLuD0PYYqTF9UsfainROcE3v6uqAkdw1xq.jpeg">
-    <img src="https://cdn.durable.co/getty/3bPmRVqB5arCHUXPNSmFSoMjhfcMK1QLIsRhxUlKnqt9XAyxIY2fKTjh3w9TPfTE.jpeg">
-    <img src="https://cdn.durable.co/getty/3afKNK4JevKUvi7QQNRHxHGAON83dWBF1RwYAwaJIVWXGF71caeeNLO7VznAN5nN.jpeg">
-    <img src="https://cdn.durable.co/getty/3aetOBQpZZC1YYByQmbaCcuV7j3uZs0JQHnTcuixRIk0WOQyHBLzTZzIdNdYDsmb.jpeg">
-    <img src="https://cdn.durable.co/getty/1v5vGLMIMk3uYGcuDQAUYr3GWL0yn6VsWCphRpbSEbopIYOL5iqWfWGcEcG1QCF5.jpeg">
-    <img src="https://cdn.durable.co/getty/3afSSD8lLKaPORVMkzuLGE1Sax92qNlUfPs7NXPrxbPaQasNlmPEhArGKsTH6rj2.jpeg">
-  </div>
-</div>
-
-
-  <div class="section small">Strategic Innovations</div>
-  <div class="section large">Revolutionizing Business <br>Strategies in India</div>
-  <div class="section medium">Lead the charge in transforming industries with cutting-edge innovation solutions, tailored for <br>dynamic growth across India’s diverse business landscape.</div>
-
-  <div class="side-by-side">
-    <div>
-      <img src="https://veriday.com/wp-content/uploads/2024/05/ai.jpeg" />
-      <h2>AI integration</h2>
-      <p>Seamless embedding of artificial intelligence into systems to automate tasks, enhance decision-making, and drive innovation.</p>
-    </div>
-    <div>
-      <img src="https://www.messungautomation.co.in/wp-content/uploads/2021/08/WHY-AUTOMATION-IS-REQUIRED-768x371.jpg" />
-      <h2>Automation</h2>
-      <p>Our smart automation tools simplify tasks, increase efficiency, and reduce the need for manual work—empowering your business to achieve more with less effort.<br>impact.</p>
-    </div>
-  </div>
-  <div id="scroll-target" class="section small">Innovate Boldly</div>
-  <div class="section large">Visionary Innovations Unleashed</div>
-
-  <div class="four-images">
-    <div>
-      <img src="https://www.zdnet.com/a/img/resize/7ecf259b4130d7418be71f0764f581a2c0ff7777/2024/01/03/2f68f2da-afef-4613-a797-a3406182819e/gettyimages-1337617436.jpg?auto=webp&width=1280" />
-      <h2>AI Chatbot</h2>
-      <p>Deploy smart AI chatbots that deliver instant, human-like support to streamline interactions and enhance user experience.</p>
-    </div>
-    <div>
-      <img src="https://uid.edu.in/wp-content/uploads/2024/07/Whats-the-Difference-Between-Interaction-Design-and-Visual-Design-UI.jpg" />
-      <h2>Interactive UI Prototyping</h2>
-      <p>Develop engaging prototypes to visualize and refine your innovative ideas before full-scale implementation.</p>
-    </div>
-    <div>
-      <img src=https://media.gettyimages.com/id/2200700261/photo/empty-presentation-background-showcase-technology-mock-up-screen-shot-powerpoint-presentation.jpg?b=1&s=2048x2048&w=0&k=20&c=a_ZSOY4SRXdZdrGcrpcpRFrjmLh54FSlEnEr7Xpb3eg= />
-      <h2>Responsive Design Solutions</h2>
-      <p>Ensure seamless performance across all devices with our responsive design strategies for dark-themed sites.</p>
-    </div>
-    <div>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSABemoc0BygIqrQeWlBpjM_zNUPLC1IgRPBw&s" />
-      <h2>Innovation-Centric Branding</h2>
-      <p>Create a compelling brand presence that aligns with your innovative offerings through cohesive design elements.</p>
-    </div>
-  </div>
-  <div class="services-container">
-    <div class="services-card">
-      <img src="https://media.gettyimages.com/id/2207592397/photo/creative-3d-rendering-of-html-css-and-javascript-code-snippets-with-modern-icons-on-a-dark.jpg?b=1&s=2048x2048&w=0&k=20&c=ot-OTzPPgZAeDI7vG19xmCvZpwkivXTkozNazlk7Cjg=" alt="Website Design">
-      <h2>Innovative Website Design</h2>
-      <p>Craft visually striking, dark-themed websites — tailored to highlight innovation and built to stay within budget.</p>
-    </div>
-    <div class="services-card">
-      <img src="https://www.tklabs.com/wp-content/uploads/2019/01/Computer-source-code-programmer-script-developer-000084712769_Large-1-Dark.jpg" alt="Development Services">
-      <h2>Customized Development Services</h2>
-      <p>Affordable, custom development solutions designed to align with your innovation goals and business identity.</p>
+    <div class="scroll-track">
+      <img src="https://cdn.durable.co/getty/1v5vGLMIMk3uYGcuDQAUYr3GWL0yn6VsWCphRpbSEbopIYOL5iqWfWGcEcG1QCF5.jpeg" alt="Innovation">
+      <img src="https://preludesys.com/wp-content/uploads/2023/10/Boomi-AI-integration.jpg" alt="AI Integration">
+      <img src="https://cdn.durable.co/getty/1rJTMDNgMTH7qxgQh4Sl2NCimZAX2zXLuD0PYYqTF9UsfainROcE3v6uqAkdw1xq.jpeg" alt="Technology">
+      <img src="https://cdn.durable.co/getty/3bPmRVqB5arCHUXPNSmFSoMjhfcMK1QLIsRhxUlKnqt9XAyxIY2fKTjh3w9TPfTE.jpeg" alt="Development">
+      <img src="https://cdn.durable.co/getty/3afKNK4JevKUvi7QQNRHxHGAON83dWBF1RwYAwaJIVWXGF71caeeNLO7VznAN5nN.jpeg" alt="Innovation">
+      <img src="https://cdn.durable.co/getty/3aetOBQpZZC1YYByQmbaCcuV7j3uZs0JQHnTcuixRIk0WOQyHBLzTZzIdNdYDsmb.jpeg" alt="Solutions">
+      <img src="https://cdn.durable.co/getty/1v5vGLMIMk3uYGcuDQAUYr3GWL0yn6VsWCphRpbSEbopIYOL5iqWfWGcEcG1QCF5.jpeg" alt="Innovation">
+      <img src="https://cdn.durable.co/getty/3afSSD8lLKaPORVMkzuLGE1Sax92qNlUfPs7NXPrxbPaQasNlmPEhArGKsTH6rj2.jpeg" alt="Technology">
     </div>
   </div>
 
-  </div>
-  
-  <div class="section small">Future Ready</div>
-  <div class="section large">Innovate Your Future Today</div>
-  <div class="section medium">Transform potential into reality with cutting-edge solutions optimized for success. Drive <br>innovation, lead progress, and redefine the future.</div><br><br><br><br><br>
+  <section class="section">
+    <span class="section-label">Strategic Innovations</span>
+    <h2 class="section-title">Revolutionizing Business<br>Strategies in India</h2>
+    <p class="section-description">Lead the charge in transforming industries with cutting-edge innovation solutions, tailored for dynamic growth across India's diverse business landscape.</p>
 
+    <div class="side-by-side">
+      <div class="card">
+        <img src="https://veriday.com/wp-content/uploads/2024/05/ai.jpeg" alt="AI Integration" />
+        <h2>AI Integration</h2>
+        <p>Seamless embedding of artificial intelligence into systems to automate tasks, enhance decision-making, and drive innovation.</p>
+      </div>
+      <div class="card">
+        <img src="https://www.messungautomation.co.in/wp-content/uploads/2021/08/WHY-AUTOMATION-IS-REQUIRED-768x371.jpg" alt="Automation" />
+        <h2>Automation</h2>
+        <p>Our smart automation tools simplify tasks, increase efficiency, and reduce the need for manual work—empowering your business to achieve more with less effort.</p>
+      </div>
+    </div>
+  </section>
 
-  <div class="section small">Trusted Feedback</div>
-  <div class="section large">Innovative Solutions, Proven Results</div>
+  <section class="section" id="scroll-target">
+    <span class="section-label">Innovate Boldly</span>
+    <h2 class="section-title">Visionary Innovations<br>Unleashed</h2>
 
-  <div class="testimonials">
-    <div class="testimonial-box">
-      <p>Project Pilot transformed our vision into a stunning reality. The dark-themed layout is sleek and captures the essence of innovation perfectly. The team's attention to detail and creative insight were exceptional. Highly recommended for anyone looking to make a bold statement online!</p>
-      <p class="author"> - Amit Khanna</p>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://www.zdnet.com/a/img/resize/7ecf259b4130d7418be71f0764f581a2c0ff7777/2024/01/03/2f68f2da-afef-4613-a797-a3406182819e/gettyimages-1337617436.jpg?auto=webp&width=1280" alt="AI Chatbot" />
+        <h2>AI Chatbot</h2>
+        <p>Deploy smart AI chatbots that deliver instant, human-like support to streamline interactions and enhance user experience.</p>
+      </div>
+      <div class="card">
+        <img src="https://uid.edu.in/wp-content/uploads/2024/07/Whats-the-Difference-Between-Interaction-Design-and-Visual-Design-UI.jpg" alt="Interactive UI Prototyping" />
+        <h2>Interactive UI Prototyping</h2>
+        <p>Develop engaging prototypes to visualize and refine your innovative ideas before full-scale implementation.</p>
+      </div>
+      <div class="card">
+        <img src="https://media.gettyimages.com/id/2200700261/photo/empty-presentation-background-showcase-technology-mock-up-screen-shot-powerpoint-presentation.jpg?b=1&s=2048x2048&w=0&k=20&c=a_ZSOY4SRXdZdrGcrpcpRFrjmLh54FSlEnEr7Xpb3eg=" alt="Responsive Design" />
+        <h2>Responsive Design Solutions</h2>
+        <p>Ensure seamless performance across all devices with our responsive design strategies for dark-themed sites.</p>
+      </div>
+      <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSABemoc0BygIqrQeWlBpjM_zNUPLC1IgRPBw&s" alt="Innovation-Centric Branding" />
+        <h2>Innovation-Centric Branding</h2>
+        <p>Create a compelling brand presence that aligns with your innovative offerings through cohesive design elements.</p>
+      </div>
     </div>
-    <div class="testimonial-box">
-      <p>Project Pilot delivered a phenomenal website, perfectly capturing the innovative spirit we envisioned. The dark theme adds an elegant touch, while their creativity and expertise made the experience seamless. A fantastic choice for anyone wanting to stand out online!</p>
-      <p class="author"> - Riya Mehta</p>
+  </section>
+
+  <section class="section">
+    <div class="services-container">
+      <div class="services-card">
+        <img src="https://media.gettyimages.com/id/2207592397/photo/creative-3d-rendering-of-html-css-and-javascript-code-snippets-with-modern-icons-on-a-dark.jpg?b=1&s=2048x2048&w=0&k=20&c=ot-OTzPPgZAeDI7vG19xmCvZpwkivXTkozNazlk7Cjg=" alt="Website Design" />
+        <div class="services-card-content">
+          <h2>Innovative Website Design</h2>
+          <p>Craft visually striking, dark-themed websites — tailored to highlight innovation and built to stay within budget.</p>
+        </div>
+      </div>
+      <div class="services-card">
+        <img src="https://www.tklabs.com/wp-content/uploads/2019/01/Computer-source-code-programmer-script-developer-000084712769_Large-1-Dark.jpg" alt="Development Services" />
+        <div class="services-card-content">
+          <h2>Customized Development Services</h2>
+          <p>Affordable, custom development solutions designed to align with your innovation goals and business identity.</p>
+        </div>
+      </div>
     </div>
-    <div class="testimonial-box">
-      <p>Project Pilot crafted a striking website for us that truly stands out. The dark theme is sophisticated and aligns with our innovative aesthetic. Their professionalism and creativity made the entire process straightforward and enjoyable. I highly recommend them for unique web projects!</p>
-      <p class="author"> - Kunal Verma</p>
+  </section>
+
+  <section class="section">
+    <span class="section-label">Future Ready</span>
+    <h2 class="section-title">Innovate Your Future Today</h2>
+    <p class="section-description">Transform potential into reality with cutting-edge solutions optimized for success. Drive innovation, lead progress, and redefine the future.</p>
+  </section>
+
+  <section class="section">
+    <span class="section-label">Trusted Feedback</span>
+    <h2 class="section-title">Innovative Solutions,<br>Proven Results</h2>
+
+    <div class="testimonials">
+      <div class="testimonial-box">
+        <p>Project Pilot transformed our vision into a stunning reality. The dark-themed layout is sleek and captures the essence of innovation perfectly. The team's attention to detail and creative insight were exceptional. Highly recommended for anyone looking to make a bold statement online!</p>
+        <p class="author">— Amit Khanna</p>
+      </div>
+      <div class="testimonial-box">
+        <p>Project Pilot delivered a phenomenal website, perfectly capturing the innovative spirit we envisioned. The dark theme adds an elegant touch, while their creativity and expertise made the experience seamless. A fantastic choice for anyone wanting to stand out online!</p>
+        <p class="author">— Riya Mehta</p>
+      </div>
+      <div class="testimonial-box">
+        <p>Project Pilot crafted a striking website for us that truly stands out. The dark theme is sophisticated and aligns with our innovative aesthetic. Their professionalism and creativity made the entire process straightforward and enjoyable. I highly recommend them for unique web projects!</p>
+        <p class="author">— Kunal Verma</p>
+      </div>
     </div>
-  </div>
+  </section>
 
   <div class="final-banner">
     <div class="final-banner-content">
@@ -416,12 +751,45 @@
       <div class="footer-inside-banner">Project Pilot</div>
     </div>
   </div>
-  <script>
-  document.querySelector('.hero button').addEventListener('click', function () {
-    document.getElementById('scroll-target').scrollIntoView({ behavior: 'smooth' });
-  });
-</script>
 
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for hero button
+    document.querySelector('.hero button').addEventListener('click', function () {
+      document.getElementById('scroll-target').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.card, .services-card, .testimonial-box').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
-
