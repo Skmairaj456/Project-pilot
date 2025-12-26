@@ -68,6 +68,37 @@
       letter-spacing: -0.5px;
     }
 
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
     nav {
       display: flex;
       gap: 2.5rem;
@@ -81,6 +112,7 @@
       font-size: 0.95rem;
       position: relative;
       transition: color 0.3s ease;
+      padding: 0.5rem 0;
     }
 
     nav a::after {
@@ -436,16 +468,48 @@
         padding: 1rem 1.5rem;
       }
 
+      header.scrolled {
+        padding: 1rem 1.5rem;
+      }
+
       header h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
       }
 
       nav {
-        gap: 1.5rem;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--dark-surface);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        gap: 0;
+      }
+
+      nav.active {
+        right: 0;
       }
 
       nav a {
-        font-size: 0.85rem;
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      nav a::after {
+        display: none;
       }
 
       .hero {
@@ -453,17 +517,44 @@
         min-height: auto;
       }
 
+      .hero h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
       .section {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 8vw, 3rem);
       }
 
       .cards,
       .grid-3 {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
 
       .portfolio {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 2rem;
+      }
+
+      .section {
+        padding: 2.5rem 1rem;
       }
     }
   </style>
@@ -471,7 +562,12 @@
 <body>
   <header id="header">
     <h1>Project Pilot</h1>
-    <nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="mainNav">
       <a href="index.html">Home</a>
       <a href="#">Services</a>
       <a href="projects.html">Projects</a>
@@ -623,6 +719,35 @@
 
   <script>
     const header = document.getElementById('header');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    // Mobile menu toggle
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.classList.toggle('active');
+      mainNav.classList.toggle('active');
+      document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking on a link
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mainNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Header scroll effect
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
