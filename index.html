@@ -139,7 +139,7 @@
     }
 
     .hero {
-      min-height: 100vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -147,6 +147,8 @@
       padding: 8rem 4rem 4rem;
       position: relative;
       overflow: hidden;
+      max-width: 1600px;
+      margin: 0 auto;
     }
 
     .hero::before {
@@ -154,8 +156,8 @@
       position: absolute;
       top: -50%;
       right: -20%;
-      width: 800px;
-      height: 800px;
+      width: 600px;
+      height: 600px;
       background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
       border-radius: 50%;
       animation: pulse 8s ease-in-out infinite;
@@ -258,8 +260,10 @@
     }
 
     .section {
-      padding: 6rem 4rem;
+      padding: 5rem 4rem;
       position: relative;
+      max-width: 1600px;
+      margin: 0 auto;
     }
 
     .section-label {
@@ -287,22 +291,64 @@
       line-height: 1.8;
     }
 
-    /* Featured Projects Grid */
+    /* Stats Grid - Compact Design */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding: 3rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--dark-surface);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* Featured Projects - Professional Grid */
     .featured-projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
       padding: 3rem 0;
     }
 
     .project-featured {
       background: var(--dark-surface);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-featured::before {
@@ -323,14 +369,14 @@
     }
 
     .project-featured:hover {
-      transform: translateY(-12px);
+      transform: translateY(-8px);
       border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 30px 80px rgba(99, 102, 241, 0.25);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.25);
     }
 
     .project-image-wrapper {
       width: 100%;
-      height: 280px;
+      height: 200px;
       overflow: hidden;
       position: relative;
       background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
@@ -346,28 +392,32 @@
     }
 
     .project-featured:hover img {
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
 
     .project-content {
-      padding: 2rem;
+      padding: 1.75rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-category {
       display: inline-block;
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.9rem;
       background: rgba(99, 102, 241, 0.15);
       color: var(--primary-color);
       border-radius: 50px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 1rem;
+      width: fit-content;
     }
 
     .project-title {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
       color: var(--text-primary);
@@ -377,8 +427,9 @@
     .project-description {
       color: var(--text-secondary);
       line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      flex-grow: 1;
     }
 
     .project-link {
@@ -388,8 +439,9 @@
       color: var(--accent-color);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
+      margin-top: auto;
     }
 
     .project-link:hover {
@@ -406,48 +458,10 @@
       transform: translateX(5px);
     }
 
-    /* Stats Section */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      padding: 4rem 0;
-    }
-
-    .stat-card {
-      text-align: center;
-      padding: 2rem;
-      background: var(--dark-surface);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(99, 102, 241, 0.3);
-    }
-
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    /* Services Grid */
+    /* Services Grid - Compact Cards */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       padding: 3rem 0;
     }
@@ -460,6 +474,7 @@
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
     .service-card::before {
@@ -479,7 +494,7 @@
     }
 
     .service-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       border-color: rgba(99, 102, 241, 0.3);
       box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
     }
@@ -488,10 +503,11 @@
       font-size: 3rem;
       margin-bottom: 1.5rem;
       display: block;
+      line-height: 1;
     }
 
     .service-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 1rem;
       color: var(--text-primary);
@@ -500,22 +516,23 @@
     .service-card p {
       color: var(--text-secondary);
       line-height: 1.7;
+      font-size: 0.95rem;
     }
 
-    /* Testimonials */
+    /* Testimonials - Compact Design */
     .testimonials {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-      padding: 4rem 0;
+      padding: 3rem 0;
       background: var(--dark-surface);
-      border-radius: 30px;
+      border-radius: 24px;
     }
 
     .testimonial-box {
       background: var(--dark-surface-2);
-      padding: 2.5rem;
-      border-radius: 20px;
+      padding: 2rem;
+      border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
@@ -527,24 +544,24 @@
     .testimonial-box::before {
       content: '"';
       position: absolute;
-      top: -20px;
-      left: 20px;
-      font-size: 8rem;
+      top: -10px;
+      left: 15px;
+      font-size: 6rem;
       color: rgba(99, 102, 241, 0.1);
       font-family: Georgia, serif;
       line-height: 1;
     }
 
     .testimonial-box:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
     }
 
     .testimonial-box p {
       margin: 0 0 1.5rem 0;
       line-height: 1.8;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--text-secondary);
       flex-grow: 1;
     }
@@ -553,18 +570,20 @@
       font-weight: 600;
       color: var(--text-primary);
       text-align: right;
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-top: auto;
     }
 
     /* CTA Section */
     .cta-section {
       background: var(--dark-surface);
-      padding: 6rem 4rem;
-      border-radius: 30px;
+      padding: 5rem 4rem;
+      border-radius: 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .cta-section::before {
@@ -572,8 +591,8 @@
       position: absolute;
       top: -50%;
       right: -20%;
-      width: 600px;
-      height: 600px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
       border-radius: 50%;
     }
@@ -586,19 +605,20 @@
     }
 
     .cta-section h2 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
       font-weight: 800;
       margin-bottom: 1.5rem;
       line-height: 1.2;
     }
 
     .cta-section p {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--text-secondary);
       margin-bottom: 2.5rem;
       line-height: 1.8;
     }
 
+    /* Responsive Design */
     @media (max-width: 1024px) {
       header {
         padding: 1.5rem 2rem;
@@ -609,11 +629,16 @@
         padding-right: 2rem;
       }
 
-      .featured-projects {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      .featured-projects,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonials {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -675,7 +700,7 @@
 
       .hero {
         padding: 6rem 1.5rem 3rem;
-        min-height: auto;
+        min-height: 70vh;
       }
 
       .hero h1 {
@@ -711,7 +736,8 @@
       }
 
       .featured-projects,
-      .services-grid {
+      .services-grid,
+      .testimonials {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
@@ -726,12 +752,11 @@
       }
 
       .stat-number {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
 
-      .testimonials {
-        grid-template-columns: 1fr;
-        padding: 3rem 1.5rem;
+      .project-image-wrapper {
+        height: 180px;
       }
 
       .cta-section {
@@ -750,6 +775,7 @@
 
       .hero {
         padding: 5rem 1rem 2rem;
+        min-height: 60vh;
       }
 
       .section {
@@ -757,7 +783,7 @@
       }
 
       .project-image-wrapper {
-        height: 220px;
+        height: 160px;
       }
 
       .service-icon {
@@ -829,7 +855,7 @@
     <div class="featured-projects">
       <div class="project-featured">
         <div class="project-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?w=600&h=400&fit=crop" alt="Hand Gesture Recognition">
+          <img src="https://media.gettyimages.com/id/1452604857/photo/businessman-touching-the-brain-working-of-artificial-intelligence-automation-predictive.jpg?b=1&s=2048x2048&w=0&k=20&c=aQm0ifaU9oYkmy7z0f86ISGiD55FENnmZvKGIt-XSsI=" alt="Hand Gesture Recognition" loading="lazy">
         </div>
         <div class="project-content">
           <span class="project-category">AI/ML • Computer Vision</span>
@@ -853,7 +879,7 @@
 
       <div class="project-featured">
         <div class="project-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop" alt="Automation">
+          <img src="https://media.gettyimages.com/id/1482781031/photo/flat-black-and-white-web-design-studio-page-layout-on-modern-computer-display-with-flying.jpg?b=1&s=2048x2048&w=0&k=20&c=flsSwA6lGWKsxUnQbHPpUAIYgrRdL_AdYAO5VSQ0wVU=" alt="Automation" loading="lazy">
         </div>
         <div class="project-content">
           <span class="project-category">Automation • Video Editing</span>
@@ -978,33 +1004,10 @@
       }
     });
 
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
     // Ensure all elements are visible by default
     document.querySelectorAll('.project-featured, .service-card, .stat-card, .testimonial-box').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
-    });
-
-    // Observer for smooth scroll animations (optional enhancement)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.project-featured, .service-card, .stat-card, .testimonial-box').forEach(el => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      // Still observe for smooth animations on scroll
-      observer.observe(el);
     });
   </script>
 </body>
