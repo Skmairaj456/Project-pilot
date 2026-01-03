@@ -727,7 +727,13 @@
       };
 
       try {
-        const response = await fetch("https://formspree.io/f/services@projectpilot.co.in", {
+        // Formspree endpoint - Update the form ID below after creating a form in Formspree dashboard
+        // Steps to configure:
+        // 1. Go to https://formspree.io and login/signup
+        // 2. Create a new form (or use existing form ID: xrbkklpo)
+        // 3. Set the recipient email to: services@projectpilot.co.in
+        // 4. Copy your form ID and replace 'xrbkklpo' below if using a new form
+        const response = await fetch("https://formspree.io/f/xrbkklpo", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
