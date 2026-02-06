@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - Project Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --platinum: #f5f4f1;
+      --cream: #faf9f6;
+      --charcoal: #1a1a1a;
+      --graphite: #2d2d2d;
+      --sand: #c9b896;
+      --warm: #e8e2d9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background-color: var(--platinum);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(250, 249, 246, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      padding: 1rem 4rem;
+      background: rgba(250, 249, 246, 0.95);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      color: var(--charcoal);
+      cursor: pointer;
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--charcoal);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--graphite);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--charcoal);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--charcoal);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      background: var(--warm) url(https://www.tryeting.jp/wp/wp-content/uploads/2021/04/AI-strength-and-type-02.jpg) center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba(245, 244, 241, 0.92) 0%, rgba(245, 244, 241, 0.75) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--graphite);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .hero button {
+      padding: 1rem 2.5rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hero button:hover {
+      background: var(--graphite);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+
+    .section-description {
+      font-size: 1.2rem;
+      color: var(--graphite);
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .section-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      color: var(--charcoal);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--warm);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(26, 26, 26, 0.04);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--sand);
+      transform: scaleX(0);
+      transition: transform 0.35s ease;
+      z-index: 1;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--sand);
+      box-shadow: 0 12px 40px rgba(26, 26, 26, 0.08);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-content h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .card-content p {
+      color: var(--graphite);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .card-content button {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: var(--charcoal);
+      font-weight: 600;
+      border: 2px solid var(--charcoal);
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-content button:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .overlay-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .overlay-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(26, 26, 26, 0.12);
+    }
+
+    .overlay-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .overlay-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(26, 26, 26, 0.92) 0%, rgba(26, 26, 26, 0.6) 50%, transparent 100%);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: background 0.4s ease;
+    }
+
+    .overlay-card:hover .overlay-text {
+      background: linear-gradient(to top, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.75) 50%, transparent 100%);
+    }
+
+    .overlay-text h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .overlay-text p {
+      color: rgba(250, 249, 246, 0.85);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .overlay-text button {
+      padding: 0.75rem 1.5rem;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-weight: 600;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .overlay-text button:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .portfolio {
+      background: var(--warm);
+      padding: 6rem 4rem;
+    }
+
+    .portfolio .section-title {
+      color: var(--charcoal);
+    }
+
+    .portfolio .section-description {
+      color: var(--graphite);
+    }
+
+    .portfolio .card {
+      background: var(--cream);
+      border: 1px solid rgba(26, 26, 26, 0.08);
+    }
+
+    .portfolio .card-content h3 {
+      color: var(--charcoal);
+    }
+
+    .portfolio .card-content p {
+      color: var(--graphite);
+    }
+
+    .footer-cta {
+      background: var(--charcoal);
+      padding: 6rem 4rem;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .footer-cta h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      color: var(--cream);
+    }
+
+    .footer-cta p {
+      font-size: 1.2rem;
+      color: rgba(250, 249, 246, 0.8);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-weight: 600;
+      font-size: 1rem;
+      border-top: 1px solid var(--warm);
+    }
+
+    @media (max-width: 1024px) {
+      header {
+        padding: 1.5rem 2rem;
+      }
+
+      .section, .hero {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      header.scrolled {
+        padding: 1rem 1.5rem;
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--cream);
+        border-left: 1px solid var(--warm);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        box-shadow: -8px 0 40px rgba(26, 26, 26, 0.08);
+        gap: 0;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+        color: var(--graphite);
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+
+      .cards,
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .portfolio {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 2rem;
+      }
+
+      .section {
+        padding: 2.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <a href="index.html" style="text-decoration: none;"><h1>Project Pilot</h1></a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="#">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Our Services</h1>
+      <p>We provide intelligent AI solutions, custom web development, intuitive UI/UX design, advanced tech integrations, strategic branding, and full support for academic projects — all tailored to drive innovation and growth.</p>
+      <a href="contact.html"><button>Get in Touch</button></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Your Partner in Growth</h2>
+    <p class="section-description">From custom websites and AI chatbots to powerful integrations and academic-grade college projects — we build, deliver, and support everything you need to succeed, all at student-friendly prices.</p>
+    
+    <div class="cards">
+      <div class="card">
+        <img src="https://media.gettyimages.com/id/2206651003/photo/e-commerce-dashboard-with-shopping-cart-icon-and-data-visualizations-3d-rendering.jpg?b=1&s=2048x2048&w=0&k=20&c=bKp6YmaC143_wMgWfANfyAX19CjpHp-3GiqrJYl5iKE=" alt="Enterprise SaaS">
+        <div class="card-content">
+          <h3>Enterprise SaaS Development</h3>
+          <p>Full-stack SaaS platforms with real-time collaboration, Kanban boards, team workspaces, role-based access control, file attachments, and comprehensive analytics. Built with Next.js, TypeScript, PostgreSQL, and modern authentication systems.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://media.gettyimages.com/id/2149039702/photo/neural-network-nodes-deep-learning-artificial-intelligence-machine-learning-model.jpg?b=1&s=2048x2048&w=0&k=20&c=mXlFWkLmm1rSL-lPs2cmQWo7Xde6wbJM4r7epYIWcOk=" alt="Medical AI">
+        <div class="card-content">
+          <h3>Medical AI & Deep Learning</h3>
+          <p>Advanced deep learning systems for medical image classification with transfer learning and GPU optimization. Achieve high accuracy rates on medical datasets using PyTorch, EfficientNet, and specialized training pipelines.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop" alt="Video Automation">
+        <div class="card-content">
+          <h3>Video Editing Automation</h3>
+          <p>AI-powered video editing automation with DaVinci Resolve integration. Automated reel creation, timeline management, batch processing, natural language control, and advanced transitions for professional video workflows.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">End-to-End Digital Solutions</h2>
+    <p class="section-description">From custom websites and AI chatbots to powerful integrations and academic-grade college projects — we build, deliver, and support everything you need to succeed, all at student-friendly prices.</p>
+    
+    <div class="grid-3">
+      <div class="overlay-card">
+        <img src="images/workshop-management.jpg" alt="Workshop Management" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'">
+        <div class="overlay-text">
+          <h3>Workshop & Business Management Systems</h3>
+          <p>Complete management platforms with customer portals, job card tracking, inventory control, billing systems, WhatsApp notifications, PDF generation, QR codes, and appointment scheduling for automotive and service businesses.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=600&fit=crop" alt="GPU Optimization">
+        <div class="overlay-text">
+          <h3>GPU Optimization & System Control</h3>
+          <p>Real-time GPU power management, CUDA optimization, LLM-accelerated debugging, intelligent governor systems for NVIDIA GPUs, performance monitoring, and dynamic adjustment solutions.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop" alt="Email Automation">
+        <div class="overlay-text">
+          <h3>Email & Communication Automation</h3>
+          <p>Intelligent email automation with template management, scheduling, logging, SMTP integration, and automated communication workflows for business operations and customer engagement.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop" alt="LLM Integration">
+        <div class="overlay-text">
+          <h3>LLM Integration & AI Debugging</h3>
+          <p>AI-powered tools for analyzing and optimizing code using LLMs. Features static analysis, dynamic profiling, real-time optimization, and modern web interfaces for CUDA/GPU code debugging.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <img src="https://media.gettyimages.com/id/1482781031/photo/flat-black-and-white-web-design-studio-page-layout-on-modern-computer-display-with-flying.jpg?b=1&s=2048x2048&w=0&k=20&c=flsSwA6lGWKsxUnQbHPpUAIYgrRdL_AdYAO5VSQ0wVU=" alt="Web Development">
+        <div class="overlay-text">
+          <h3>Full-Stack Web Development</h3>
+          <p>Cutting-edge web applications with React, Node.js, MongoDB, Express, and modern frameworks. Responsive designs, real-time features, and scalable architectures tailored to your business needs.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <img src="https://media.gettyimages.com/id/1731629004/photo/mobile-app-design-web-design-streaming-app-and-user-interface.jpg?b=1&s=2048x2048&w=0&k=20&c=C9uLrDwnTX7Of6-7fkjQcCT1EyHpZkhgqwErs2dbLp8=" alt="UI/UX Design">
+        <div class="overlay-text">
+          <h3>Customized UI/UX Design</h3>
+          <p>Dark-themed, modern interface designs crafted for optimal impact and user engagement. Intuitive layouts that drive interaction and enhance user experience.</p>
+          <a href="projects.html"><button>View Projects</button></a>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <img src="https://media.gettyimages.com/id/1635297999/photo/neural-network-model-concept.jpg?b=1&s=2048x2048&w=0&k=20&c=fTi16kuMAj7i9qPxl0DZCwZp8cww6Cu_uFGlv4VBA6g=" alt="College Projects">
+        <div class="overlay-text">
+          <h3>College Projects & Academic Solutions</h3>
+          <p>Academic-grade projects with full source code, comprehensive documentation, and deployment support. Perfect for students and learners at student-friendly prices.</p>
+          <a href="College Projects.html"><button>More Info</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio">
+    <h2 class="section-title">Our Portfolio</h2>
+    <p class="section-description">Explore some of our recent projects that showcase innovation and excellence.</p>
+    
+    <div class="cards">
+      <div class="card">
+        <img src="https://connectivelinkstechnology.com/assets/front/images/service/dynamic_web/2.jpg" alt="Dynamic Web Design">
+        <div class="card-content">
+          <h3>Dynamic Web Design</h3>
+          <p>We developed a dynamic, dark-themed website blending innovation with user experience.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://media.gettyimages.com/id/2206651003/photo/e-commerce-dashboard-with-shopping-cart-icon-and-data-visualizations-3d-rendering.jpg?b=1&s=2048x2048&w=0&k=20&c=bKp6YmaC143_wMgWfANfyAX19CjpHp-3GiqrJYl5iKE=" alt="E-commerce Platform">
+        <div class="card-content">
+          <h3>E-commerce Platform Launch</h3>
+          <p>Sleek dark-themed platform optimized for responsiveness and branding impact.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://media.gettyimages.com/id/1403985100/photo/web-development-for-ui-ux-design-concept-illustration-landing-page-template-business-idea.jpg?b=1&s=2048x2048&w=0&k=20&c=BsRl5xgnAV132RMXd5EA4D_2Te0uD4j6yC0DRiTfjU0=" alt="Tech Showcases">
+        <div class="card-content">
+          <h3>Interactive Tech Showcases</h3>
+          <p>Implemented interactive animations and immersive experiences for clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <h2>Drive Future Innovations Now</h2>
+    <p>Explore cutting-edge solutions tailored for India's dynamic market. Project Pilot turns visionary concepts into impactful innovations.</p>
+  </section>
+
+  <footer>
+    Project Pilot
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    // Mobile menu toggle
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.classList.toggle('active');
+      mainNav.classList.toggle('active');
+      document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking on a link
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mainNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.card, .overlay-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
