@@ -21,12 +21,17 @@ export default {
         heading: ['"Syne"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'display': ['clamp(3.5rem, 9vw, 7rem)', { lineHeight: '0.98', letterSpacing: '-0.04em' }],
-        'display-sm': ['clamp(2rem, 4.5vw, 3.25rem)', { lineHeight: '1.12', letterSpacing: '-0.025em' }],
-        'section-num': ['clamp(6rem, 18vw, 14rem)', { lineHeight: '0.85', letterSpacing: '-0.04em' }],
+        'display': ['clamp(3.25rem, 8.5vw, 6.5rem)', { lineHeight: '0.96', letterSpacing: '-0.035em' }],
+        'display-sm': ['clamp(1.875rem, 4.2vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'section-num': ['clamp(5rem, 14vw, 11rem)', { lineHeight: '0.82', letterSpacing: '-0.04em' }],
+        'eyebrow': ['0.6875rem', { lineHeight: '1.4', letterSpacing: '0.2em' }],
       },
       borderRadius: {
-        'btn': '6px',
+        'btn': '4px',
+      },
+      maxWidth: {
+        'prose': '65ch',
+        'tight': '48rem',
       },
       animation: {
         'fade-up': 'fadeUp 0.7s ease-out forwards',
