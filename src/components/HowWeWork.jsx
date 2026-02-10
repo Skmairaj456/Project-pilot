@@ -19,7 +19,7 @@ export default function HowWeWork() {
       id="process"
       className="relative z-10 py-20 sm:py-28 md:py-36 px-4 sm:px-6 md:px-10"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-content mx-auto">
         <p className="eyebrow mb-4">Process</p>
         <h2 className="font-heading text-display-sm font-bold text-charcoal mb-12 sm:mb-16 md:mb-20">
           How we work.
@@ -33,7 +33,7 @@ export default function HowWeWork() {
         >
           {steps.map(({ title, body }, i) => (
             <motion.div key={title} variants={item} className="group">
-              <span className="font-heading text-[11px] font-bold text-sand/90 tracking-[0.2em]">
+              <span className="font-heading text-[11px] font-bold text-champagne tracking-[0.2em]">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <h3 className="font-heading text-lg font-bold text-charcoal mt-3 mb-2 group-hover:text-graphite transition-colors duration-200">

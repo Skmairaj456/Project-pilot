@@ -32,7 +32,7 @@ export default function Hero() {
         animate="visible"
       >
         <motion.p
-          className="eyebrow text-sand/90 mb-4 sm:mb-5"
+          className="eyebrow mb-4 sm:mb-5"
           variants={item}
         >
           Digital partners for growing businesses
@@ -46,7 +46,7 @@ export default function Hero() {
           One system.
         </motion.h1>
         <motion.p
-          className="text-[15px] sm:text-lg md:text-xl text-graphite max-w-prose leading-relaxed mb-10 sm:mb-12"
+          className="font-serif text-[15px] sm:text-lg md:text-xl text-graphite max-w-prose leading-relaxed mb-10 sm:mb-12"
           variants={item}
         >
           We build ERPs, inventory platforms, and custom software. One team. Clear scope. Software that scales.

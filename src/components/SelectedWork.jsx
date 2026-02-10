@@ -21,7 +21,7 @@ export default function SelectedWork() {
       id="work"
       className="relative z-10 py-20 sm:py-28 md:py-36 px-4 sm:px-6 md:px-10 bg-warm/25"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-content mx-auto">
         <p className="eyebrow mb-4">Work</p>
         <h2 className="font-heading text-display-sm font-bold text-charcoal mb-12 sm:mb-16 md:mb-20">
           Selected work.

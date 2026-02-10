@@ -13,7 +13,7 @@ export default function TrustSignals() {
       ref={ref}
       className="relative z-10 py-20 sm:py-28 md:py-36 px-4 sm:px-6 md:px-10 bg-cream/50 border-y border-charcoal/[0.06]"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-content mx-auto">
         <p className="eyebrow mb-6">What clients say</p>
         <blockquote className="max-w-prose">
           <p className="font-serif text-xl sm:text-2xl md:text-[1.6rem] text-charcoal leading-snug tracking-tight">

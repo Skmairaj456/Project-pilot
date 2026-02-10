@@ -23,8 +23,9 @@ export default function Header() {
         scrolled ? 'bg-platinum/98 backdrop-blur-md py-2.5 sm:py-3 border-b border-charcoal/[0.06]' : 'py-4 sm:py-5'
       }`}
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-between gap-4">
-        <a href="#" className="font-heading text-[15px] sm:text-base font-bold text-charcoal tracking-tight hover:opacity-70 transition-opacity shrink-0">
+      <div className="max-w-content mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-between gap-4">
+        <a href="#" className="flex items-center gap-2.5 font-heading text-[15px] sm:text-base font-bold text-charcoal tracking-tight hover:opacity-70 transition-opacity shrink-0">
+          <img src="/favicon-48.png" alt="" className="w-8 h-8 sm:w-9 sm:h-9" width="48" height="48" />
           Project Pilot
         </a>
 

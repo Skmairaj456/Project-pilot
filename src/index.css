@@ -19,7 +19,7 @@
 }
 
 ::selection {
-  background: rgba(26, 26, 26, 0.12);
+  background: rgba(26, 26, 26, 0.1);
   color: inherit;
 }
 
@@ -35,11 +35,11 @@
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgba(26, 26, 26, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(26, 26, 26, 0.025) 1px, transparent 1px);
-  background-size: min(72px, 7vw) min(72px, 7vw);
-  mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, black 15%, transparent 65%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, black 15%, transparent 65%);
+    linear-gradient(to right, rgba(26, 26, 26, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 26, 26, 0.02) 1px, transparent 1px);
+  background-size: min(64px, 6vw) min(64px, 6vw);
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, black 10%, transparent 60%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, black 10%, transparent 60%);
 }
 
 .grain {
@@ -51,33 +51,33 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Primary CTA */
+/* Primary CTA — charcoal, premium restraint */
 .btn-primary {
-  @apply inline-flex items-center justify-center font-heading font-semibold text-[13px] tracking-tight transition-all duration-300;
+  @apply inline-flex items-center justify-center font-heading font-semibold text-[13px] tracking-wide transition-all duration-300;
   @apply bg-charcoal text-cream hover:bg-graphite;
   @apply px-7 py-3.5;
   min-height: 48px;
-  letter-spacing: 0.02em;
-  border-radius: 4px;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
   box-shadow: 0 1px 0 rgba(0,0,0,0.08);
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.12);
 }
 
-/* Invert (light on dark) */
+/* Invert — cream on dark (CTA section) */
 .btn-primary-invert {
-  @apply inline-flex items-center justify-center font-heading font-semibold text-[13px] tracking-tight transition-all duration-300;
+  @apply inline-flex items-center justify-center font-heading font-semibold text-[13px] tracking-wide transition-all duration-300;
   @apply bg-cream text-charcoal hover:bg-white;
   @apply px-7 py-3.5;
   min-height: 48px;
-  letter-spacing: 0.02em;
-  border-radius: 4px;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
 }
 .btn-primary-invert:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Link underline */
@@ -98,12 +98,12 @@
   width: 100%;
 }
 
-/* Section eyebrow label */
+/* Section eyebrow — refined neutral */
 .eyebrow {
-  @apply font-heading uppercase text-sand font-semibold;
+  @apply font-heading uppercase text-champagne font-semibold;
   font-size: 0.6875rem;
   line-height: 1.4;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
 }
 
 @keyframes fadeUp {

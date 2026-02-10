@@ -14,6 +14,15 @@ export default {
         sand: '#c9b896',
         champagne: '#d4c4a8',
         warm: '#e8e2d9',
+        /* Refined accent — use sparingly */
+        'brand-blue': '#4a8ee6',
+        'brand-blue-dark': '#3a7ad4',
+        'brand-orange': '#f59b5c',
+        'brand-orange-light': '#fef4ed',
+      },
+      letterSpacing: {
+        'display': '-0.04em',
+        'tight': '-0.02em',
       },
       fontFamily: {
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
@@ -30,8 +39,13 @@ export default {
         'btn': '4px',
       },
       maxWidth: {
-        'prose': '65ch',
-        'tight': '48rem',
+        'prose': '60ch',
+        'tight': '44rem',
+        'content': '1100px',
+      },
+      boxShadow: {
+        'soft': '0 2px 8px rgba(26, 26, 26, 0.06)',
+        'soft-lg': '0 4px 24px rgba(26, 26, 26, 0.08)',
       },
       animation: {
         'fade-up': 'fadeUp 0.7s ease-out forwards',
