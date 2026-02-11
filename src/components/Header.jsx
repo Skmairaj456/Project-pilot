@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const navLinks = [
   { label: 'What we build', href: '#what-we-do' },
@@ -7,19 +7,37 @@ const navLinks = [
   { label: 'Contact', href: 'contact.html' },
 ]
 
+const SCROLL_THRESHOLD = 80
+const SCROLL_TOP_SHOW = 16
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 50)
+      if (y <= SCROLL_TOP_SHOW) {
+        setHeaderVisible(true)
+      } else if (y > lastScrollY.current && y > SCROLL_THRESHOLD) {
+        setHeaderVisible(false)
+      } else if (y < lastScrollY.current) {
+        setHeaderVisible(true)
+      }
+      lastScrollY.current = y
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] ${
+        !headerVisible ? '-translate-y-full' : 'translate-y-0'
+      } ${
         scrolled ? 'bg-platinum/98 backdrop-blur-md pb-2.5 sm:pb-3 border-b border-charcoal/[0.06]' : 'pb-4 sm:pb-5'
       }`}
       style={{
