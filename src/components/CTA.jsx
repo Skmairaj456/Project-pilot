@@ -4,25 +4,38 @@ import { motion } from 'framer-motion'
 export default function CTA() {
   const ref = useScrollReveal({ y: 24, duration: 0.8 })
   return (
-    <section ref={ref} className="relative z-10 py-24 sm:py-28 md:py-36 px-4 sm:px-6 md:px-10 bg-charcoal text-cream">
-      <div className="max-w-content mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-12 sm:gap-14">
-        <div className="min-w-0">
-          <p className="text-cream/60 text-[11px] font-heading uppercase tracking-[0.22em] mb-5">Get in touch</p>
-          <h2 className="font-heading text-display-sm font-bold mb-4 leading-tight tracking-tight">
-            Ready to streamline your operations?
-          </h2>
-          <p className="text-cream/80 text-[15px] sm:text-base md:text-lg max-w-prose leading-relaxed">
-            Book a call. We'll discuss your needs and next steps—no pitch, no pressure.
-          </p>
+    <section ref={ref} className="relative z-10 py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 bg-gradient-cta text-cream overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} aria-hidden="true" />
+      <div className="relative z-10 max-w-content mx-auto">
+        <p className="text-cream/60 text-[11px] font-heading uppercase tracking-[0.22em] mb-2">06 — Get in touch</p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-10">
+          <div className="min-w-0">
+            <h2 className="font-heading text-display-sm font-bold mb-3 leading-[1.1] tracking-tight">
+              Ready to streamline
+              <br />
+              your operations?
+            </h2>
+            <p className="text-cream/80 text-[15px] sm:text-base md:text-lg max-w-prose leading-relaxed mb-6 lg:mb-0">
+              Book a call. We'll discuss your needs and next steps—no pitch, no pressure.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 shrink-0">
+            <a
+              href="mailto:services@projectpilot.co.in"
+              className="font-heading text-[13px] font-semibold text-cream/90 hover:text-cream transition-colors py-2 min-h-[44px] inline-flex items-center"
+            >
+              services@projectpilot.co.in
+            </a>
+            <motion.a
+              href="contact.html"
+              className="btn-primary-invert w-full sm:w-auto text-center inline-flex justify-center"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Book a call
+            </motion.a>
+          </div>
         </div>
-        <motion.a
-          href="contact.html"
-          className="btn-primary-invert shrink-0 w-full sm:w-auto text-center inline-flex justify-center"
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          Book a call
-        </motion.a>
       </div>
     </section>
   )

@@ -19,9 +19,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-platinum/98 backdrop-blur-md py-2.5 sm:py-3 border-b border-charcoal/[0.06]' : 'py-4 sm:py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] ${
+        scrolled ? 'bg-platinum/98 backdrop-blur-md pb-2.5 sm:pb-3 border-b border-charcoal/[0.06]' : 'pb-4 sm:pb-5'
       }`}
+      style={{
+        paddingTop: `calc(env(safe-area-inset-top, 0px) + ${scrolled ? '0.625rem' : '1rem'})`,
+      }}
     >
       <div className="max-w-content mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-between gap-4">
         <a href="#" className="flex items-center gap-2.5 font-heading text-[15px] sm:text-base font-bold text-charcoal tracking-tight hover:opacity-70 transition-opacity shrink-0">

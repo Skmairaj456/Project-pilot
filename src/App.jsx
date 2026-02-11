@@ -1,3 +1,4 @@
+import ScrollProgress from './components/ScrollProgress'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Positioning from './components/Positioning'
@@ -11,6 +12,7 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <>
+      <ScrollProgress />
       <Header />
       <main>
         <Hero />

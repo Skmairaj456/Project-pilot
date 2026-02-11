@@ -5,6 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xs: '375px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         platinum: '#f5f4f1',
@@ -46,10 +54,14 @@ export default {
       boxShadow: {
         'soft': '0 2px 8px rgba(26, 26, 26, 0.06)',
         'soft-lg': '0 4px 24px rgba(26, 26, 26, 0.08)',
+        'card': '0 2px 12px rgba(26, 26, 26, 0.06), 0 1px 3px rgba(26, 26, 26, 0.04)',
+        'card-hover': '0 8px 32px rgba(26, 26, 26, 0.1), 0 2px 8px rgba(26, 26, 26, 0.06)',
+        'elevated': '0 12px 40px rgba(26, 26, 26, 0.08)',
       },
-      animation: {
-        'fade-up': 'fadeUp 0.7s ease-out forwards',
-        'fade-in': 'fadeIn 0.6s ease-out forwards',
+      backgroundImage: {
+        'gradient-hero': 'linear-gradient(180deg, transparent 0%, rgba(232, 226, 217, 0.4) 70%, rgba(201, 184, 150, 0.12) 100%)',
+        'gradient-section': 'linear-gradient(180deg, rgba(250, 249, 246, 0.6) 0%, rgba(245, 244, 241, 0.9) 100%)',
+        'gradient-cta': 'linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1f1f1f 100%)',
       },
       keyframes: {
         fadeUp: {
@@ -60,6 +72,20 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+      },
+      animation: {
+        'fade-up': 'fadeUp 0.7s ease-out forwards',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        float: 'float 4s ease-in-out infinite',
+        shimmer: 'shimmer 3s ease-in-out infinite',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
