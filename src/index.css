@@ -7,11 +7,16 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
   }
   body {
     @apply font-sans text-charcoal bg-platinum antialiased;
     overflow-x: hidden;
     min-width: 0;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   img {
     max-width: 100%;
@@ -20,15 +25,32 @@
   }
 }
 
-/* Mobile: tap highlight and touch targets */
-@media (hover: none) {
-  a, button {
-    -webkit-tap-highlight-color: transparent;
-  }
+/* Remove tap highlight on all interactive elements (stops "selected" look on mobile) */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
+
+/* Prevent accidental text selection on tap (stops "selected" look on mobile) */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* Allow selection only in body copy for copying text */
+main p,
+main li,
+main blockquote {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 ::selection {
-  background: rgba(26, 26, 26, 0.1);
+  background: rgba(26, 26, 26, 0.12);
   color: inherit;
 }
 
