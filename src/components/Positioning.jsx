@@ -25,7 +25,6 @@ export default function Positioning() {
       </span>
 
       <div className="relative z-10 max-w-content mx-auto">
-        <p className="font-heading text-[11px] font-bold text-champagne tracking-[0.22em] mb-2">01</p>
         <p className="font-heading text-[15px] sm:text-[16px] md:text-lg font-medium text-charcoal max-w-prose leading-relaxed mb-8 sm:mb-10 md:mb-12">
           We work with manufacturers, distributors, and businesses that outgrew spreadsheets. One team handles strategy, design, and build—so you get a system that fits how you work.
         </p>
@@ -44,7 +43,7 @@ export default function Positioning() {
               key={label}
               variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="card-soft flex flex-col px-5 py-4 sm:px-7 sm:py-6 w-full min-w-0 md:min-w-[160px] transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover border-l-4 border-transparent hover:border-champagne"
+              className="card-soft flex flex-col px-5 py-4 sm:px-7 sm:py-6 w-full min-w-0 md:min-w-[160px] transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 border-l-4 border-transparent hover:border-champagne"
             >
               <span className="font-heading text-2xl sm:text-3xl md:text-[2rem] font-bold text-charcoal tracking-tight leading-none">
                 {value}

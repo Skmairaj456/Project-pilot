@@ -19,8 +19,15 @@ export default function HowWeWork() {
       id="process"
       className="relative z-10 py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 bg-platinum overflow-hidden"
     >
+      {/* Section watermark */}
+      <span
+        className="absolute right-4 top-1/2 -translate-y-1/2 font-heading font-bold text-charcoal/[0.04] pointer-events-none select-none"
+        style={{ fontSize: 'clamp(5rem, 16vw, 10rem)', lineHeight: 0.9, letterSpacing: '-0.05em' }}
+        aria-hidden="true"
+      >
+        04
+      </span>
       <div className="max-w-content mx-auto relative">
-        <p className="eyebrow mb-2">04 — Process</p>
         <h2 className="font-heading text-display-sm font-bold text-charcoal mb-8 sm:mb-10 md:mb-12">
           How we <span className="italic font-serif text-champagne">work.</span>
         </h2>

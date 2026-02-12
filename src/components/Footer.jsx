@@ -5,10 +5,14 @@ export default function Footer() {
         <a href="#" className="font-heading text-[14px] font-bold text-charcoal hover:opacity-70 transition-opacity tracking-tight">
           Project Pilot
         </a>
-        <nav className="flex flex-wrap gap-8 sm:gap-10">
+        <nav className="flex flex-wrap items-center gap-6 sm:gap-8">
           <a href="services.html" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">Services</a>
           <a href="projects.html" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">Projects</a>
+          <a href="#faq" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">FAQ</a>
           <a href="contact.html" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">Contact</a>
+          <a href="contact.html" className="btn-primary-outline text-center py-2.5 px-5">
+            Book a call
+          </a>
         </nav>
       </div>
       <div className="max-w-content mx-auto mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-charcoal/[0.05]">

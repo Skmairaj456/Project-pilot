@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f4f1" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
   <link rel="apple-touch-icon" href="/favicon-192.png" sizes="192x192" />
@@ -40,12 +42,15 @@
       right: 0;
       z-index: 50;
       padding: 1rem 0 1.25rem;
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
       transition: all 0.3s ease;
     }
     .site-header.scrolled {
       background: rgba(245, 244, 241, 0.98);
       backdrop-filter: blur(12px);
-      padding: 0.625rem 0 0.75rem;
+      padding: calc(env(safe-area-inset-top, 0px) + 0.625rem) env(safe-area-inset-right) 0.75rem env(safe-area-inset-left);
       border-bottom: 1px solid rgba(26, 26, 26, 0.06);
     }
     .header-inner {
@@ -108,7 +113,9 @@
       transition: width 0.3s ease;
     }
     .nav-desktop a:hover::after { width: 100%; }
-    .btn-nav {
+    /* Book a call button — override .nav-desktop a so text stays light */
+    .btn-nav,
+    .nav-desktop a.btn-nav {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -117,8 +124,8 @@
       font-weight: 600;
       padding: 0.875rem 1.75rem;
       min-height: 48px;
-      background: var(--charcoal);
-      color: var(--cream);
+      background: #1a1a1a;
+      color: #faf9f6 !important;
       border: none;
       border-radius: 2px;
       text-decoration: none;
@@ -127,11 +134,14 @@
       transition: all 0.3s ease;
       margin-left: 0.75rem;
     }
-    .btn-nav:hover {
-      background: var(--graphite);
+    .btn-nav:hover,
+    .nav-desktop a.btn-nav:hover {
+      background: #2d2d2d;
+      color: #faf9f6 !important;
       transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(26, 26, 26, 0.12);
     }
+    .nav-desktop a.btn-nav::after { display: none; }
     .menu-btn {
       display: flex;
       flex-direction: column;
@@ -182,7 +192,19 @@
       display: flex;
       align-items: center;
     }
-    .nav-mobile .btn-nav { margin: 1.25rem 0 0; }
+    /* Mobile: Book a call button — same visible style as desktop */
+    .nav-mobile a.btn-nav {
+      margin: 1.25rem 0 0;
+      justify-content: center;
+      min-height: 48px;
+      background: #1a1a1a;
+      color: #faf9f6 !important;
+      border-radius: 2px;
+      padding: 0.875rem 1.75rem;
+      border: none;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+    .nav-mobile a.btn-nav:hover { background: #2d2d2d; color: #faf9f6 !important; }
 
     /* Main */
     main { padding-top: 5rem; }
@@ -330,14 +352,34 @@
       box-shadow: 0 4px 16px rgba(26, 26, 26, 0.12);
     }
     .contact-form-wrap button:disabled { opacity: 0.7; cursor: not-allowed; }
+    .form-success {
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--champagne);
+      padding-left: 1rem;
+    }
+    .form-success[hidden] { display: none !important; }
+    .form-success-title {
+      font-family: 'Syne', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+    .form-success-text {
+      font-size: 0.9375rem;
+      color: var(--graphite);
+    }
 
     /* Footer — match main site */
     .site-footer {
       border-top: 1px solid rgba(26, 26, 26, 0.06);
       background: var(--platinum);
-      padding: 2rem 1rem 2.5rem;
+      padding: 2rem 1rem max(2.5rem, env(safe-area-inset-bottom));
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
     }
-    @media (min-width: 768px) { .site-footer { padding: 2.5rem 2.5rem 3rem; } }
+    @media (min-width: 768px) { .site-footer { padding: 2.5rem max(2.5rem, env(safe-area-inset-right)) max(3rem, env(safe-area-inset-bottom)) max(2.5rem, env(safe-area-inset-left)); } }
     .footer-inner {
       max-width: var(--content);
       margin: 0 auto;
@@ -412,6 +454,7 @@
         <a href="index.html#what-we-do">What we build</a>
         <a href="index.html#work">Work</a>
         <a href="index.html#process">Process</a>
+        <a href="index.html#faq">FAQ</a>
         <a href="contact.html">Contact</a>
         <a href="contact.html" class="btn-nav">Book a call</a>
       </nav>
@@ -423,6 +466,7 @@
       <a href="index.html#what-we-do">What we build</a>
       <a href="index.html#work">Work</a>
       <a href="index.html#process">Process</a>
+      <a href="index.html#faq">FAQ</a>
       <a href="contact.html">Contact</a>
       <a href="contact.html" class="btn-nav">Book a call</a>
     </nav>
@@ -443,6 +487,10 @@
         <p>Based in India.</p>
       </div>
       <div class="contact-form-wrap">
+        <div id="formSuccess" class="form-success" hidden>
+          <p class="form-success-title">Thanks! We'll be in touch soon.</p>
+          <p class="form-success-text">We typically respond within 1–2 business days.</p>
+        </div>
         <form id="contactForm">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -462,7 +510,9 @@
       <nav class="footer-nav">
         <a href="services.html">Services</a>
         <a href="projects.html">Projects</a>
+        <a href="index.html#faq">FAQ</a>
         <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn-nav">Book a call</a>
       </nav>
     </div>
     <div class="footer-bottom">
@@ -512,7 +562,9 @@
             })
           });
           if (res.ok) {
-            btn.textContent = 'Sent ✓';
+            var successEl = document.getElementById('formSuccess');
+            form.style.display = 'none';
+            successEl.hidden = false;
             form.reset();
           } else {
             throw new Error();

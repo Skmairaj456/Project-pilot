@@ -1,13 +1,19 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { motion } from 'framer-motion'
 
 export default function CTA() {
   const ref = useScrollReveal({ y: 24, duration: 0.8 })
   return (
     <section ref={ref} className="relative z-10 py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 bg-gradient-cta text-cream overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} aria-hidden="true" />
+      <div className="absolute inset-0 opacity-[0.025] pointer-events-none mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} aria-hidden="true" />
+      {/* Section watermark */}
+      <span
+        className="absolute right-4 top-1/2 -translate-y-1/2 font-heading font-bold text-cream/[0.06] pointer-events-none select-none"
+        style={{ fontSize: 'clamp(5rem, 16vw, 10rem)', lineHeight: 0.9, letterSpacing: '-0.05em' }}
+        aria-hidden="true"
+      >
+        06
+      </span>
       <div className="relative z-10 max-w-content mx-auto">
-        <p className="text-cream/60 text-[11px] font-heading uppercase tracking-[0.22em] mb-2">06 — Get in touch</p>
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-10">
           <div className="min-w-0">
             <h2 className="font-heading text-display-sm font-bold mb-3 leading-[1.1] tracking-tight">
@@ -26,14 +32,9 @@ export default function CTA() {
             >
               services@projectpilot.co.in
             </a>
-            <motion.a
-              href="contact.html"
-              className="btn-primary-invert w-full sm:w-auto text-center inline-flex justify-center"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <a href="contact.html" className="btn-primary-invert w-full sm:w-auto text-center inline-flex justify-center">
               Book a call
-            </motion.a>
+            </a>
           </div>
         </div>
       </div>

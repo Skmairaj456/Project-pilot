@@ -4,6 +4,7 @@ const navLinks = [
   { label: 'What we build', href: '#what-we-do' },
   { label: 'Work', href: '#work' },
   { label: 'Process', href: '#process' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: 'contact.html' },
 ]
 
@@ -42,7 +43,7 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a href="contact.html" className="btn-primary ml-3">
+          <a href="contact.html" className="btn-primary ml-3" title="Book a call or send a message">
             Book a call
           </a>
         </nav>
