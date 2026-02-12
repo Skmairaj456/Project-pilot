@@ -13,6 +13,15 @@ const more = [
   { title: 'Enterprise SaaS & collaboration', outcome: 'Project and team tools with real-time sync.', image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=82', href: 'projects.html' },
 ]
 
+// More websites / crazy projects — add your own URLs and titles
+const moreWebsites = [
+  { title: 'Experiment 01', url: '#' },
+  { title: 'Experiment 02', url: '#' },
+  { title: 'Side project', url: '#' },
+  { title: 'Personal site', url: '#' },
+  { title: 'Another build', url: '#' },
+]
+
 export default function SelectedWork() {
   const ref = useScrollReveal({ y: 36, duration: 0.85 })
   return (
@@ -102,6 +111,28 @@ export default function SelectedWork() {
             All projects →
           </a>
         </p>
+
+        {/* More websites / crazy builds */}
+        <div className="mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-charcoal/[0.08]">
+          <p className="eyebrow mb-3">More sites I built</p>
+          <p className="font-heading text-[13px] text-graphite mb-5 max-w-prose">
+            Experiments, side projects, and other websites.
+          </p>
+          <ul className="flex flex-wrap gap-3 sm:gap-4">
+            {moreWebsites.map(({ title, url }) => (
+              <li key={title}>
+                <a
+                  href={url}
+                  target={url.startsWith('http') ? '_blank' : undefined}
+                  rel={url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="font-heading text-[12px] sm:text-[13px] font-semibold text-charcoal bg-white/80 hover:bg-white border border-charcoal/[0.08] hover:border-champagne/50 px-4 py-2.5 rounded-full transition-colors inline-block"
+                >
+                  {title} →
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )
