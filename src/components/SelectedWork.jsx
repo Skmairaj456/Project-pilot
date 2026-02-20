@@ -1,25 +1,26 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-const featured = {
-  title: 'Full ERP for a manufacturing client',
-  outcome: 'One system for orders, inventory, production tracking, and reporting. Replaced spreadsheets and multiple tools.',
-  metric: '5 tools replaced · One platform',
-  image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85',
-  href: 'projects.html',
-}
-
-const more = [
-  { title: 'Inventory & operations platform', outcome: 'Real-time stock, orders, and dashboards.', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=82', href: 'projects.html' },
-  { title: 'Enterprise SaaS & collaboration', outcome: 'Project and team tools with real-time sync.', image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=82', href: 'projects.html' },
-]
-
-// More websites / crazy projects — add your own URLs and titles
-const moreWebsites = [
-  { title: 'Experiment 01', url: '#' },
-  { title: 'Experiment 02', url: '#' },
-  { title: 'Side project', url: '#' },
-  { title: 'Personal site', url: '#' },
-  { title: 'Another build', url: '#' },
+const projects = [
+  {
+    title: 'Operations ERP for a manufacturing team',
+    outcome: 'One system for orders, inventory, production tracking, and reporting.',
+    impact: 'Replaced 5 internal tools',
+  },
+  {
+    title: 'Workflow automation layer for a service business',
+    outcome: 'Reduced manual follow-ups and eliminated duplicate entry across teams.',
+    impact: 'Fewer handoffs, faster throughput',
+  },
+  {
+    title: 'Executive reporting & data visibility suite',
+    outcome: 'Decision-grade dashboards with clean definitions, ownership, and access.',
+    impact: 'Single source of truth',
+  },
+  {
+    title: 'AI-assisted operations for repetitive tasks',
+    outcome: 'Applied AI to compress time-to-completion without adding fragility.',
+    impact: 'Lower ops load',
+  },
 ]
 
 export default function SelectedWork() {
@@ -28,110 +29,38 @@ export default function SelectedWork() {
     <section
       ref={ref}
       id="work"
-      className="relative z-10 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-10 bg-gradient-section overflow-hidden"
+      className="relative z-10 py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 border-t border-line"
     >
-      {/* Section watermark */}
-      <span
-        className="absolute right-4 top-1/2 -translate-y-1/2 font-heading font-bold text-charcoal/[0.04] pointer-events-none select-none"
-        style={{ fontSize: 'clamp(5rem, 16vw, 10rem)', lineHeight: 0.9 }}
-        aria-hidden="true"
-      >
-        03
-      </span>
-
       <div className="relative z-10 max-w-content mx-auto">
-        <h2 className="font-heading text-display-sm font-bold text-charcoal mb-5 sm:mb-6 md:mb-8">
-          Selected <span className="italic font-serif text-champagne">work.</span>
+        <h2 className="font-heading text-display-sm font-bold text-text mb-8 sm:mb-10">
+          Selected work
         </h2>
 
-        {/* Bento: featured large, then 2 in a row */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
-          <a href={featured.href} className="group block lg:col-span-8">
-            <div className="relative">
-              <div className="overflow-hidden rounded-xl shadow-card bg-charcoal/[0.06] ring-1 ring-charcoal/[0.06] transition-all duration-300 group-hover:shadow-elevated group-hover:ring-champagne/25 group-hover:-translate-y-1">
-                <div className="aspect-[16/10] sm:aspect-[2.2/1] overflow-hidden relative">
-                  <img
-                    src={featured.image}
-                    alt=""
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-charcoal/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none" />
-                  <span className="absolute bottom-4 left-4 right-4 font-heading text-[13px] font-semibold text-cream tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2">
-                    View project <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </span>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+          {projects.map(({ title, outcome, impact }) => (
+            <a
+              key={title}
+              href="#contact"
+              className="group card-soft p-6 sm:p-7 block"
+              aria-label={`${title} — discuss this project`}
+            >
+              <div className="flex items-center justify-between gap-4">
+                <p className="eyebrow">Flagship</p>
+                <span className="text-muted text-[12px] font-heading tracking-wide transition-transform duration-300 group-hover:translate-x-1">
+                  Discuss →
+                </span>
               </div>
-              <div className="mt-3 sm:mt-4 pl-1">
-                <p className="font-heading text-[11px] font-semibold uppercase tracking-[0.15em] text-champagne mb-1.5">
-                  {featured.metric}
-                </p>
-                <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-charcoal group-hover:text-graphite transition-colors duration-200">
-                  {featured.title}
-                </h3>
-                <p className="text-graphite text-[14px] sm:text-[15px] mt-1.5 max-w-xl leading-relaxed">
-                  {featured.outcome}
-                </p>
-              </div>
-            </div>
-          </a>
-
-          <div className="lg:col-span-4 flex flex-col gap-3 sm:gap-4">
-            {more.map(({ title, outcome, image, href }) => (
-              <a key={title} href={href} className="group block">
-                <div className="relative h-full flex flex-col rounded-xl overflow-hidden shadow-card bg-white/90 ring-1 ring-charcoal/[0.06] transition-all duration-300 hover:shadow-card-hover hover:ring-champagne/20 hover:-translate-y-1">
-                  <div className="aspect-[4/3] overflow-hidden relative min-h-[120px]">
-                    <img
-                      src={image}
-                      alt=""
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                    <span className="absolute bottom-3 left-3 right-3 font-heading text-[11px] font-semibold text-cream tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      View project →
-                    </span>
-                  </div>
-                  <div className="p-3 sm:p-4">
-                    <h3 className="font-heading text-base sm:text-lg font-bold text-charcoal group-hover:text-graphite transition-colors duration-200">
-                      {title}
-                    </h3>
-                    <p className="text-graphite text-[13px] sm:text-[14px] mt-1 leading-relaxed">
-                      {outcome}
-                    </p>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-6">
-          <a href="projects.html" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
-            All projects →
-          </a>
-        </p>
-
-        {/* More websites / crazy builds */}
-        <div className="mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-charcoal/[0.08]">
-          <p className="eyebrow mb-3">More sites I built</p>
-          <p className="font-heading text-[13px] text-graphite mb-5 max-w-prose">
-            Experiments, side projects, and other websites.
-          </p>
-          <ul className="flex flex-wrap gap-3 sm:gap-4">
-            {moreWebsites.map(({ title, url }) => (
-              <li key={title}>
-                <a
-                  href={url}
-                  target={url.startsWith('http') ? '_blank' : undefined}
-                  rel={url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="font-heading text-[12px] sm:text-[13px] font-semibold text-charcoal bg-white/80 hover:bg-white border border-charcoal/[0.08] hover:border-champagne/50 px-4 py-2.5 rounded-full transition-colors inline-block"
-                >
-                  {title} →
-                </a>
-              </li>
-            ))}
-          </ul>
+              <h3 className="mt-4 font-heading text-xl sm:text-2xl font-bold text-text tracking-tight">
+                {title}
+              </h3>
+              <p className="mt-3 text-muted text-[14px] sm:text-[15px] leading-relaxed">
+                {outcome}
+              </p>
+              <p className="mt-6 text-[13px] font-heading font-semibold text-bronze tracking-wide">
+                {impact}
+              </p>
+            </a>
+          ))}
         </div>
       </div>
     </section>
