@@ -4,15 +4,15 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 const faqs = [
   {
     q: 'How long does a project typically take?',
-    a: 'Timeline depends on scope. Most website projects take 4–8 weeks from discovery to launch. Automation and AI integrations may add 2–4 additional weeks. We work in phases so you see results early and can launch before everything is 100% done.',
+    a: 'Timeline depends on scope. Most website projects take 4-8 weeks from discovery to launch. Automation and AI integrations may add 2-4 additional weeks. We work in phases so you see results early and can launch before everything is 100% done.',
   },
   {
-    q: 'What\'s your process?',
-    a: 'Discovery → Design → Build → Launch. We start with strategy calls to understand your business goals, design the solution, build it clean, and support you post-launch. Regular updates keep you in the loop.',
+    q: 'What is your process?',
+    a: 'Discovery, Design, Build, Launch. We start with strategy calls to understand your business goals, design the solution, build it clean, and support you post-launch. Regular updates keep you in the loop.',
   },
   {
     q: 'Will this actually increase conversions?',
-    a: 'Yes, but results depend on your traffic and current setup. We\'ll audit your current site during discovery, identify friction points, and set clear metrics before we build. Our goal is measurable ROI.',
+    a: 'Yes, but results depend on your traffic and current setup. We will audit your current site during discovery, identify friction points, and set clear metrics before we build. Our goal is measurable ROI.',
   },
   {
     q: 'Do you handle ongoing maintenance?',
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'Can you integrate with tools we already use?',
-    a: 'Absolutely. CRM, email, chat, analytics, payment processors—we integrate with what you\'re using. If something\'s not compatible, we\'ll recommend alternatives during discovery.',
+    a: 'Absolutely. CRM, email, chat, analytics, payment processors, we integrate with what you are using. If something is not compatible, we will recommend alternatives during discovery.',
   },
 ]
 
