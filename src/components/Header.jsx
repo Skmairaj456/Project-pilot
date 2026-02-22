@@ -62,8 +62,8 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a href="contact.html" className="btn-primary ml-3" title="Get a free strategy call">
-            Get a Free Strategy Call
+          <a href="/book" className="btn-primary ml-3" title="Book a strategy call">
+            Get a Strategy Call
           </a>
         </nav>
 
@@ -92,8 +92,8 @@ export default function Header() {
                 {label}
               </a>
             ))}
-            <a href="contact.html" className="btn-primary mt-5 w-full sm:w-fit text-center" onClick={() => setMobileOpen(false)}>
-              Get a Free Strategy Call
+            <a href="/book" className="btn-primary mt-5 w-full sm:w-fit text-center" onClick={() => setMobileOpen(false)}>
+              Get a Strategy Call
             </a>
           </nav>
         </div>

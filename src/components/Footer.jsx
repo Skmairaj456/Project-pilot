@@ -11,8 +11,8 @@ export default function Footer() {
           <a href="#pricing" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">Pricing</a>
           <a href="#faq" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">FAQ</a>
           <a href="contact.html" className="font-heading text-[12px] text-graphite hover:text-charcoal transition-colors duration-200 link-underline py-1 min-h-[44px] flex items-center tracking-wide">Contact</a>
-          <a href="contact.html" className="btn-primary-outline text-center py-2.5 px-5">
-            Get a Free Strategy Call
+          <a href="/book" className="btn-primary-outline text-center py-2.5 px-5">
+            Get a Strategy Call
           </a>
         </nav>
       </div>

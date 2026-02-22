@@ -29,7 +29,7 @@ export default function CTA() {
             >
               services@projectpilot.co.in
             </a>
-            <a href="contact.html" className="btn-primary-invert w-full sm:w-auto text-center inline-flex justify-center">
+            <a href="/book" className="btn-primary-invert w-full sm:w-auto text-center inline-flex justify-center">
               Get a Strategy Call
             </a>
           </div>

@@ -58,7 +58,7 @@ export default function WhatWeDo() {
           {services.map(({ title, description, href }) => (
             <motion.li key={title} variants={listItem}>
               <a
-                href={href}
+                href="/book"
                 className="group block h-full rounded-xl card-soft p-6 sm:p-7 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 border-l-2 border-transparent hover:border-champagne focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne/50 focus-visible:ring-offset-2"
               >
                 <h3 className="font-heading text-lg sm:text-xl font-bold text-charcoal mt-0 mb-2 group-hover:text-graphite transition-colors">
@@ -75,7 +75,7 @@ export default function WhatWeDo() {
           ))}
         </motion.ul>
         <p className="mt-8">
-          <a href="contact.html" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
+          <a href="/book" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
             Discuss your project →
           </a>
         </p>

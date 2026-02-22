@@ -118,7 +118,7 @@ export default function TrustSignals() {
         </div>
 
         <p className="mt-10">
-          <a href="contact.html" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
+          <a href="/book" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
             Let&apos;s connect →
           </a>
         </p>
