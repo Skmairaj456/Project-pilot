@@ -29,6 +29,15 @@
     height: auto;
     display: block;
   }
+  /* Anchor scroll: prevent fixed header from hiding section on mobile/desktop */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
+  @media (min-width: 768px) {
+    section[id] {
+      scroll-margin-top: 110px;
+    }
+  }
 }
 
 /* Remove tap highlight on all interactive elements (stops "selected" look on mobile) */

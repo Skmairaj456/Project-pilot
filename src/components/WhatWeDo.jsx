@@ -1,15 +1,32 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { motion } from 'framer-motion'
 
-const items = [
-  { title: 'ERP & business systems', outcome: 'One platform for workflows, reporting, and operations.' },
-  { title: 'Inventory & operations', outcome: 'Stock, orders, and dashboards built for daily use.' },
-  { title: 'Web, product & APIs', outcome: 'Sites, apps, and integrations that scale.' },
-  { title: 'Strategy & scope', outcome: 'Clear goals and roadmap before we write code.' },
+/* Conversion-focused services: outcomes, not just features. Learn More + hover. */
+const services = [
+  {
+    title: 'AI-Powered Website Development',
+    description: 'Websites that capture leads and guide visitors to action—faster load times, clear CTAs, and smart structure that converts.',
+    href: 'contact.html',
+  },
+  {
+    title: 'Conversion-Focused UI/UX Design',
+    description: 'Design that reduces friction and builds trust. Every screen is built to move users toward a goal.',
+    href: 'contact.html',
+  },
+  {
+    title: 'Business Automation & AI Integration',
+    description: 'Connect your site to CRMs, email, and workflows. Automate follow-ups and qualify leads without extra manual work.',
+    href: 'contact.html',
+  },
+  {
+    title: 'Website Performance Optimization',
+    description: 'Faster pages, better Core Web Vitals, and a smoother experience so more visitors stay and convert.',
+    href: 'contact.html',
+  },
 ]
 
 const list = { visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }
-const listItem = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } }
+const listItem = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } }
 
 export default function WhatWeDo() {
   const ref = useScrollReveal({ y: 36, duration: 0.85 })
@@ -19,7 +36,6 @@ export default function WhatWeDo() {
       id="what-we-do"
       className="relative z-10 py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 bg-cream/50 overflow-hidden"
     >
-      {/* Section watermark */}
       <span
         className="absolute right-4 top-1/2 -translate-y-1/2 font-heading font-bold text-charcoal/[0.04] pointer-events-none select-none"
         style={{ fontSize: 'clamp(5rem, 16vw, 10rem)', lineHeight: 0.9, letterSpacing: '-0.05em' }}
@@ -32,34 +48,35 @@ export default function WhatWeDo() {
           What we <span className="italic font-serif text-champagne">build.</span>
         </h2>
 
-        {/* Bento-style grid: 2 cols on md+, varying heights */}
         <motion.ul
           className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5"
           initial="hidden"
           variants={list}
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
-          {items.map(({ title, outcome }, i) => (
-            <motion.li
-              key={title}
-              variants={listItem}
-              className={`group relative overflow-hidden rounded-xl card-soft p-6 sm:p-7 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 border-l-2 border-transparent hover:border-champagne ${
-                i === 0 ? 'md:row-span-2 md:flex md:flex-col md:justify-center border-l-champagne/40' : ''
-              }`}
-            >
-              <h3 className="relative font-heading text-lg sm:text-xl font-bold text-charcoal mt-0 mb-2 group-hover:text-graphite transition-colors">
-                {title}
-              </h3>
-              <p className="relative text-graphite text-[14px] sm:text-[15px] leading-relaxed">
-                {outcome}
-              </p>
+          {services.map(({ title, description, href }) => (
+            <motion.li key={title} variants={listItem}>
+              <a
+                href={href}
+                className="group block h-full rounded-xl card-soft p-6 sm:p-7 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 border-l-2 border-transparent hover:border-champagne focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne/50 focus-visible:ring-offset-2"
+              >
+                <h3 className="font-heading text-lg sm:text-xl font-bold text-charcoal mt-0 mb-2 group-hover:text-graphite transition-colors">
+                  {title}
+                </h3>
+                <p className="text-graphite text-[14px] sm:text-[15px] leading-relaxed mb-5">
+                  {description}
+                </p>
+                <span className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-flex items-center gap-1">
+                  Learn More <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                </span>
+              </a>
             </motion.li>
           ))}
         </motion.ul>
         <p className="mt-8">
-          <a href="services.html" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
-            Full services →
+          <a href="contact.html" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
+            Discuss your project →
           </a>
         </p>
       </div>

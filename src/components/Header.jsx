@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 
 const navLinks = [
-  { label: 'What we build', href: '#what-we-do' },
-  { label: 'Work', href: '#work' },
+  { label: 'Services', href: '#what-we-do' },
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'Process', href: '#process' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: 'contact.html' },
@@ -61,8 +62,8 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a href="contact.html" className="btn-primary ml-3" title="Book a call or send a message">
-            Book a call
+          <a href="contact.html" className="btn-primary ml-3" title="Get a free strategy call">
+            Get a Free Strategy Call
           </a>
         </nav>
 
@@ -92,7 +93,7 @@ export default function Header() {
               </a>
             ))}
             <a href="contact.html" className="btn-primary mt-5 w-full sm:w-fit text-center" onClick={() => setMobileOpen(false)}>
-              Book a call
+              Get a Free Strategy Call
             </a>
           </nav>
         </div>

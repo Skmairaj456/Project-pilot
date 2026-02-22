@@ -5,6 +5,8 @@ import Positioning from './components/Positioning'
 import TrustedBy from './components/TrustedBy'
 import WhatWeDo from './components/WhatWeDo'
 import SelectedWork from './components/SelectedWork'
+import CaseStudies from './components/CaseStudies'
+import Pricing from './components/Pricing'
 import HowWeWork from './components/HowWeWork'
 import TrustSignals from './components/TrustSignals'
 import FAQ from './components/FAQ'
@@ -23,6 +25,8 @@ export default function App() {
         <TrustedBy />
         <WhatWeDo />
         <SelectedWork />
+        <CaseStudies />
+        <Pricing />
         <HowWeWork />
         <TrustSignals />
         <FAQ />

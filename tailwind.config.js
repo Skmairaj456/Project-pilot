@@ -60,6 +60,8 @@ export default {
       },
       backgroundImage: {
         'gradient-hero': 'linear-gradient(180deg, transparent 0%, rgba(232, 226, 217, 0.4) 70%, rgba(201, 184, 150, 0.12) 100%)',
+        /* Subtle tech gradient for hero — modern, conversion-focused */
+        'gradient-hero-tech': 'linear-gradient(135deg, rgba(245,244,241,0.97) 0%, rgba(232,226,217,0.5) 40%, rgba(240,248,255,0.15) 100%)',
         'gradient-section': 'linear-gradient(180deg, rgba(250, 249, 246, 0.6) 0%, rgba(245, 244, 241, 0.9) 100%)',
         'gradient-cta': 'linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1f1f1f 100%)',
       },
