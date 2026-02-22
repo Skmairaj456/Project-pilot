@@ -3,24 +3,24 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const faqs = [
   {
-    q: 'How long does a typical project take?',
-    a: 'It depends on scope. A discovery and proposal usually takes 1–2 weeks. Build phases range from a few weeks for a focused module to several months for a full ERP. We break work into phases so you see progress early.',
+    q: 'How long does a project typically take?',
+    a: 'Timeline depends on scope. Most website projects take 4–8 weeks from discovery to launch. Automation and AI integrations may add 2–4 additional weeks. We work in phases so you see results early and can launch before everything is 100% done.',
   },
   {
-    q: 'Do you work with our existing tech stack?',
-    a: 'Yes. We integrate with common ERPs, databases, and APIs. We’ll align on your stack during discovery and recommend changes only when they clearly benefit the outcome.',
+    q: 'What\'s your process?',
+    a: 'Discovery → Design → Build → Launch. We start with strategy calls to understand your business goals, design the solution, build it clean, and support you post-launch. Regular updates keep you in the loop.',
   },
   {
-    q: 'What does discovery cost?',
-    a: 'Discovery is a short, fixed-scope engagement. We’ll give you a clear quote after an initial call so you can decide before any build work starts.',
+    q: 'Will this actually increase conversions?',
+    a: 'Yes, but results depend on your traffic and current setup. We\'ll audit your current site during discovery, identify friction points, and set clear metrics before we build. Our goal is measurable ROI.',
   },
   {
-    q: 'What if we only need one module (e.g. inventory)?',
-    a: 'We often start with one module—inventory, orders, or reporting—and expand from there. You get value sooner and we design so it can grow into a full system.',
+    q: 'Do you handle ongoing maintenance?',
+    a: 'Our plans include support for 2 weeks to 3 months depending on tier. For ongoing needs beyond that, we offer retainer support packages. Most clients stay with us for updates and optimization.',
   },
   {
-    q: 'Where are you based?',
-    a: 'We’re based in India and work with clients globally. Calls and collaboration are over video; time zones are agreed up front so communication stays smooth.',
+    q: 'Can you integrate with tools we already use?',
+    a: 'Absolutely. CRM, email, chat, analytics, payment processors—we integrate with what you\'re using. If something\'s not compatible, we\'ll recommend alternatives during discovery.',
   },
 ]
 

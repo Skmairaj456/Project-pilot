@@ -16,10 +16,10 @@ export default function CTA() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 sm:gap-10">
           <div className="min-w-0">
             <h2 className="font-heading text-display-sm font-bold mb-3 leading-[1.1] tracking-tight">
-              Ready to Scale Your Business with AI?
+              Ready to Build a Website That Grows Your Business?
             </h2>
             <p className="text-cream/80 text-[15px] sm:text-base md:text-lg max-w-prose leading-relaxed mb-6 lg:mb-0">
-              Book your free strategy call. We&apos;ll discuss your goals and the best next steps—no pitch, no pressure.
+              Let's talk through your goals, timeline, and budget. We'll share ideas and show you exactly how we can help.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 shrink-0">
@@ -30,7 +30,7 @@ export default function CTA() {
               services@projectpilot.co.in
             </a>
             <a href="contact.html" className="btn-primary-invert w-full sm:w-auto text-center inline-flex justify-center">
-              Book Your Free Strategy Call
+              Get a Strategy Call
             </a>
           </div>
         </div>

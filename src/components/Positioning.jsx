@@ -2,9 +2,9 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { motion } from 'framer-motion'
 
 const stats = [
-  { value: '50+', label: 'Projects delivered' },
-  { value: '10+', label: 'ERPs & business systems' },
-  { value: '95%', label: 'Client satisfaction' },
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '10+', label: 'Industries Served' },
+  { value: '95%', label: 'Client Satisfaction' },
 ]
 
 export default function Positioning() {
@@ -26,7 +26,7 @@ export default function Positioning() {
 
       <div className="relative z-10 max-w-content mx-auto">
         <p className="font-heading text-[15px] sm:text-[16px] md:text-lg font-medium text-charcoal max-w-prose leading-relaxed mb-8 sm:mb-10 md:mb-12">
-          We work with manufacturers, distributors, and businesses that outgrew spreadsheets. One team handles strategy, design, and build—so you get a system that fits how you work.
+          We partner with startup founders and growing business owners who want smart websites and automation, not generic templates. One integrated team handles strategy, design, and build—so you get solutions that actually drive results.
         </p>
         <motion.div
           className="grid grid-cols-1 xs:grid-cols-2 md:flex md:flex-wrap gap-3 sm:gap-4 md:gap-5"

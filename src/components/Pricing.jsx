@@ -60,8 +60,11 @@ export default function Pricing() {
         <h2 className="font-heading text-display-sm font-bold text-charcoal mb-3 sm:mb-4">
           Simple, transparent pricing
         </h2>
-        <p className="text-graphite text-[15px] sm:text-base max-w-prose mb-10 sm:mb-12">
+        <p className="text-graphite text-[15px] sm:text-base max-w-prose mb-3 sm:mb-4">
           Choose a plan that fits your stage. All include a strategy call to align on goals.
+        </p>
+        <p className="text-graphite text-[14px] sm:text-[15px] max-w-prose mb-10 sm:mb-12 font-medium">
+          Projects typically start from ₹50,000 depending on scope. <a href="contact.html" className="text-charcoal font-semibold link-underline">Contact us to get a tailored quote.</a>
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">

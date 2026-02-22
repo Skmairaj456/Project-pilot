@@ -20,9 +20,6 @@ export default function Footer() {
         <p className="text-graphite/80 text-[11px] sm:text-[12px] tracking-wide">
           © 2025 Project Pilot
         </p>
-        <a href="projects.html" className="text-graphite/70 text-[11px] sm:text-[12px] hover:text-charcoal transition-colors">
-          College Projects &amp; Experiments
-        </a>
       </div>
     </footer>
   )

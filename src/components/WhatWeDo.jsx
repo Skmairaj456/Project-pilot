@@ -4,23 +4,23 @@ import { motion } from 'framer-motion'
 /* Conversion-focused services: outcomes, not just features. Learn More + hover. */
 const services = [
   {
-    title: 'AI-Powered Website Development',
-    description: 'Websites that capture leads and guide visitors to action—faster load times, clear CTAs, and smart structure that converts.',
+    title: 'Business Websites',
+    description: 'Conversion-focused website design built for your brand to drive results.',
     href: 'contact.html',
   },
   {
-    title: 'Conversion-Focused UI/UX Design',
-    description: 'Design that reduces friction and builds trust. Every screen is built to move users toward a goal.',
+    title: 'UI/UX & Design',
+    description: 'Intuitive user experiences that keep customers engaged and moving toward action.',
     href: 'contact.html',
   },
   {
-    title: 'Business Automation & AI Integration',
-    description: 'Connect your site to CRMs, email, and workflows. Automate follow-ups and qualify leads without extra manual work.',
+    title: 'Automation & AI',
+    description: 'Smart automation like chat support, lead routing, form logic, and task automation to save hours.',
     href: 'contact.html',
   },
   {
-    title: 'Website Performance Optimization',
-    description: 'Faster pages, better Core Web Vitals, and a smoother experience so more visitors stay and convert.',
+    title: 'Conversion Optimization',
+    description: 'Data-driven improvements to increase sign-ups, sales, and customer lifetime value.',
     href: 'contact.html',
   },
 ]

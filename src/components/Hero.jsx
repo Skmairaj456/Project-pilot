@@ -32,7 +32,7 @@ export default function Hero() {
           animate="visible"
         >
           <motion.div variants={item} className="mb-5 sm:mb-6">
-            <p className="eyebrow">AI-powered websites &amp; automation for growing businesses</p>
+            <p className="eyebrow">Smart websites &amp; automation for growing brands</p>
             <span className="mt-3 block w-14 h-0.5 rounded-full bg-gradient-to-r from-champagne to-transparent" aria-hidden="true" />
           </motion.div>
 
@@ -42,9 +42,9 @@ export default function Hero() {
             style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4rem)', lineHeight: 1.08, letterSpacing: '-0.03em' }}
             variants={item}
           >
-            <span className="block">We Build AI-Powered Websites</span>
+            <span className="block">We Build Smart Websites &amp;</span>
             <span className="block font-serif italic font-normal text-champagne mt-1 sm:mt-2">
-              That Turn Visitors Into Customers
+              Automation That Grow Your Business
             </span>
           </motion.h1>
 
@@ -52,12 +52,12 @@ export default function Hero() {
             className="font-sans text-base sm:text-lg text-graphite max-w-prose leading-relaxed mb-9 sm:mb-11"
             variants={item}
           >
-            Helping startups and growing businesses automate, scale, and convert better with smart web and AI solutions.
+            Web solutions with built-in automation and smart features to convert visitors, automate workflows, and save you time.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-4 sm:gap-6">
             <a href="contact.html" className="btn-primary">
-              Get a Free Strategy Call
+              Get a Strategy Call
             </a>
             <a href="#case-studies" className="font-heading text-[13px] font-semibold text-charcoal link-underline py-2">
               View Case Studies

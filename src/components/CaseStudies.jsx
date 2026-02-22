@@ -7,21 +7,21 @@ const studies = [
     industry: 'SaaS Startup',
     problem: 'Low sign-up conversion and high bounce on pricing page.',
     solution: 'Redesigned pricing and onboarding flow with clear CTAs and social proof.',
-    results: '42% increase in sign-ups, 28% lower bounce in 3 months.',
+    results: '↑ 42% increase in sign-ups, ↓ 28% lower bounce in 3 months.',
     href: 'projects.html',
   },
   {
     industry: 'E-commerce (D2C)',
     problem: 'Cart abandonment and slow mobile experience.',
     solution: 'Mobile-first redesign, one-tap checkout options, and post-purchase automation.',
-    results: 'Mobile conversion up 35%, recovery emails added for abandoned carts.',
+    results: '↑ Mobile conversion +35%, automated recovery emails implemented.',
     href: 'projects.html',
   },
   {
     industry: 'B2B Services',
     problem: 'Leads not qualifying; sales team wasting time on cold prospects.',
     solution: 'AI-powered lead scoring, chatbot for qualification, and CRM integration.',
-    results: 'Qualified lead volume up 50%, faster response time with automation.',
+    results: '↑ Qualified lead volume +50%, faster response time with automation.',
     href: 'projects.html',
   },
 ]
@@ -78,11 +78,14 @@ export default function CaseStudies() {
           ))}
         </motion.div>
 
-        <p className="mt-8">
+        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+          <p className="text-graphite text-[15px] sm:text-base">
+            See more results and how we've helped businesses scale.
+          </p>
           <a href="projects.html" className="font-heading text-[13px] font-semibold text-charcoal link-underline inline-block">
-            All case studies →
+            View All Case Studies →
           </a>
-        </p>
+        </div>
       </div>
     </section>
   )

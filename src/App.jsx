@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Positioning from './components/Positioning'
 import TrustedBy from './components/TrustedBy'
 import WhatWeDo from './components/WhatWeDo'
+import WhyChooseUs from './components/WhyChooseUs'
 import SelectedWork from './components/SelectedWork'
 import CaseStudies from './components/CaseStudies'
 import Pricing from './components/Pricing'
@@ -24,6 +25,7 @@ export default function App() {
         <Positioning />
         <TrustedBy />
         <WhatWeDo />
+        <WhyChooseUs />
         <SelectedWork />
         <CaseStudies />
         <Pricing />

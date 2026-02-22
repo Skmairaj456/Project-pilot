@@ -2,10 +2,10 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { motion } from 'framer-motion'
 
 const steps = [
-  { title: 'Discover', body: 'We align on goals, constraints, and scope. No build on assumption.' },
-  { title: 'Design', body: 'Structure and flows. We iterate with you until it fits.' },
-  { title: 'Build', body: 'Clean code, phased delivery. You see progress early.' },
-  { title: 'Launch', body: 'Go live. We stay for iterations and scale.' },
+  { title: 'Strategy Call', body: 'We learn your business, goals, and constraints. No assumptions. You\'ll have a clear understanding of next steps after this call.' },
+  { title: 'Design & Plan', body: 'We create a design that converts and plan the technical architecture. You approve before we touch code.' },
+  { title: 'Build & Test', body: 'Clean, well-documented code. Phased delivery so you can provide feedback early. Tests ensure quality.' },
+  { title: 'Launch & Optimize', body: 'Go live with full support. We monitor performance, fix issues, and help optimize for better results.' },
 ]
 
 const container = { visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }

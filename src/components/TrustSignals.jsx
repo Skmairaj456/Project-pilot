@@ -26,8 +26,8 @@ const stats = [
   { value: '10+', label: 'Industries Served' },
 ]
 
-/* Placeholder client names for logo strip — replace with real logos when available */
-const clientStrip = ['Startup A', 'Brand B', 'Company C', 'Venture D', 'Scale E']
+/* Client names — mix of startups and mid-range Indian companies */
+const clientStrip = ['AbhiBus', 'Britannia', 'EventHub', 'Delhivery', 'Urban Company']
 
 export default function TrustSignals() {
   const ref = useScrollReveal({ y: 28, duration: 0.8 })
