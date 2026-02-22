@@ -5,17 +5,21 @@ export default defineConfig({
   plugins: [react()],
   server: {
     middlewareMode: false,
-    middleware: [
-      (req, res, next) => {
-        if (req.url.startsWith('/') && !req.url.includes('.') && !req.url.startsWith('/api')) {
-          req.url = '/index.html'
-        }
-        next()
-      }
-    ]
   },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
   },
+  // For SPA routing fallback
+  configureServer(server) {
+    return () => {
+      server.middlewares.use((req, res, next) => {
+        // Serve index.html for all non-file routes (for SPA)
+        if (!req.url.includes('.') && !req.url.startsWith('/api') && !req.url.startsWith('/@')) {
+          req.url = '/index.html'
+        }
+        next()
+      })
+    }
+  }
 })

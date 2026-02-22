@@ -56,9 +56,6 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <a href="contact.html" className="btn-primary">
-              Get a Strategy Call
-            </a>
             <a href="#case-studies" className="font-heading text-[13px] font-semibold text-charcoal link-underline py-2">
               View Case Studies
             </a>
