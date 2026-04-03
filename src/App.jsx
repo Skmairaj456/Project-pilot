@@ -8,7 +8,6 @@ import WhatWeDo from './components/WhatWeDo'
 import WhyChooseUs from './components/WhyChooseUs'
 import SelectedWork from './components/SelectedWork'
 import CaseStudies from './components/CaseStudies'
-import Pricing from './components/Pricing'
 import HowWeWork from './components/HowWeWork'
 import TrustSignals from './components/TrustSignals'
 import FAQ from './components/FAQ'
@@ -80,7 +79,6 @@ export default function App() {
         <WhyChooseUs />
         <SelectedWork />
         <CaseStudies />
-        <Pricing />
         <HowWeWork />
         <TrustSignals />
         <FAQ />

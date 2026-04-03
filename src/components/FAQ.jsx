@@ -4,7 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 const faqs = [
   {
     q: 'How long does a project typically take?',
-    a: 'Timeline depends on scope. Most website projects take 4-8 weeks from discovery to launch. Automation and AI integrations may add 2-4 additional weeks. We work in phases so you see results early and can launch before everything is 100% done.',
+    a: 'Timeline depends on scope. Most web projects execute in about a week. Automation and AI integrations may take longer depending on complexity. We work in phases so you see results early and can launch before everything is 100% done.',
   },
   {
     q: 'What is your process?',
